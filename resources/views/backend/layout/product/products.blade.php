@@ -58,7 +58,7 @@
                             <td>{{$product->sell_price}}</td>
                             <td>{{$product->qty}}</td>
                             <td>{{$product->description}}</td>
-                            <td>{{$product->category}}</td>
+                            <td>{{$product->category->category_name}}</td>
                             <td>{{$product->availability}}</td>
 
                             <td class="">

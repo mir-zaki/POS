@@ -90,7 +90,7 @@
                   <select class="form-control select_group" id="category" name="category" multiple="multiple">
                     @foreach ($product as $add)
 
-                    <option value="{{$add->category_name}}">{{$add->category_name}}</option>
+                    <option value="{{$add->id}}">{{$add->category_name}}</option>
 
                     @endforeach
                     

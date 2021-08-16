@@ -17,7 +17,7 @@ class ProductCon extends Controller
 
     public function product_add ()
     {
-        $products=product::paginate(5);
+        $products=product::with("category")->paginate(5);
         // dd($products->all());
         return view('backend.layout.product.products',compact('products'));
     }
@@ -38,7 +38,7 @@ product::create([
             'sell_price'=>$addproduct->sell_price,
             'qty'=>$addproduct->qty,
             'description'=>$addproduct->description,
-            'category'=>$addproduct->category,
+            'category_id'=>$addproduct->category,
             'availability'=>$addproduct->availability,
         
             

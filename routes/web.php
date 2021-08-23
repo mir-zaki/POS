@@ -66,6 +66,7 @@ Route::get('/dashboard',[DashboardCon::class,'dashboard'])->name('dash');
 
 // category start
 Route::get('/category',[CategoryCon::class,'categories'])->name('category');
+Route::get('/category/{id}details',[CategoryCon::class,'categories_details'])->name('categories_details');
 Route::post('/categories',[CategoryCon::class,'category_add'])->name('categoryadd');
 // category end
 

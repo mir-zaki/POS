@@ -7,9 +7,9 @@
   <title>Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->  
+  <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Font Awesome -->  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/font-awesome.css">
   <!-- Ionicons -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/css/jquery-jvectormap.css">
   <!-- Date Picker -->
   <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->  
+  <!-- Daterange picker -->
   <link rel="stylesheet" href="/css/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="/css/bootstrap3-wysihtml5.min.css">
@@ -37,7 +37,7 @@
   <!-- icheck -->
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="/css/_all.css">
-  
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,7 +85,7 @@
   <script src="/js/fastclick.js"></script>
   <!-- Select2 -->
   <script src="/js/select2.full.min.js"></script>
-  <!-- AdminLTE App -->  
+  <!-- AdminLTE App -->
   <script src="/js/adminlte.min.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="/js/dashboard.js"></script>
@@ -102,6 +102,8 @@
   <!-- DataTables -->
 <script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/dataTables.bootstrap.min.js"></script>
+<script src="/js/dataTables.jquery-ui.js"></script>
+
 
 
 
@@ -111,7 +113,7 @@
 
   @include('backend.partial.header')
   <!-- Left side column. contains the logo and sidebar -->
-  
+
 
   @include('backend.partial.navber')
 
@@ -122,7 +124,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $("#dashboardMainMenu").addClass('active');
-    }); 
+    });
   </script>
 
   @include('backend.partial.footer')

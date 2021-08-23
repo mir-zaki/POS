@@ -1,6 +1,6 @@
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
-    <b>Version</b> 0.1.0
+    <b>Version</b> 0.0.1
   </div>
-  <strong>Copyright &copy; 2018-2021.</strong> All rights reserved.
+  <strong>Copyright z@ki &copy;2021.</strong> All rights reserved.
 </footer>

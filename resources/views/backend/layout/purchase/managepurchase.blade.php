@@ -7,11 +7,11 @@
     <section class="content-header">
       <h1>
         Manage
-        <small>Products</small>
+        Purchase</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Products</li>
+        <li class="active">Purchase</li>
       </ol>
     </section>
 
@@ -24,7 +24,7 @@
           <div id="messages"></div>
 
 
-           <a href="{{route('product')}}" class="btn btn-primary">Add Product</a>
+                    <a href="{{route('product')}}" class="btn btn-primary">Add Product</a>
             <br /> <br />
 
           <div class="box">
@@ -36,44 +36,46 @@
               <table id="manageTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Image</th>
-
+                  <th>Date</th>
+                  <th>Supplier Name</th>
                   <th>Product Name</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                   <th>Availability</th>
+                  <th>Buy Price</th>
+                  <th>Sell Price</th>
+                  <th>Qty</th>
+                  {{-- <th>category</th> --}}
                   <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $product)
-                        <tr>
-                            <td>{{$product->product_image}}</td>
-                            <td>{{$product->product_name}}</td>
-                            <td>{!!$product->description!!}</td>
-                            <td>{{$product->category->category_name}}</td>
-                            <td>{{$product->availability}}</td>
 
-                            <td class="">
-                              <a href="#"><i class="material-icons">cancel</i></a>
-                              <a href="#"><i class="material-icons">edit</i></a>
-
-                            </td>
+                    @foreach($pur as $purc)
+                    <tr>
+                        <td>{!!$purc->purchase_date!!}</td>
+                        <td>{{$purc->Supplier->supplier_name}}</td>
+                        <td>{{$purc->Product->product_name}}</td>
+                        <td>{{$purc->buy_price}}</td>
+                        <td>{{$purc->sell_price}}</td>
+                        <td>{{$purc->qty}}</td>
+                        {{-- <td>{{$purc->category->category_name}}</td> --}}
 
 
-                            {{-- <td>{{$category->active}}</td> --}}
-                            {{-- <td class="">
-                                <a href="#"><i class="material-icons">cancel</i></a>
-                                <a href="#"><i class="material-icons">edit</i></a>
 
-                            </td> --}}
 
-                        </tr>
-                        @endforeach()
+                        <td class="">
+                          <a href="#"><i class="material-icons">cancel</i></a>
+                          <a href="#"><i class="material-icons">edit</i></a>
+
+                        </td>
+
+
+
+
+                    </tr>
+                    @endforeach()
             </tbody>
 
               </table>
-              {{$products->links('pagination::bootstrap-4')}}
+
             </div>
             <!-- /.box-body -->
           </div>

@@ -10,11 +10,11 @@
     <section class="content-header">
       <h1>
         Manage
-        <small>Users</small>
+        Supplier</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Users</li>
+        <li class="active">Supplier</li>
       </ol>
     </section>
 
@@ -24,11 +24,9 @@
       <div class="row">
         <div class="col-md-12 col-xs-12">
 
-                      <div class="alert alert-success alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              Successfully removed            </div>
+                      
                     
-                      <a href="http://localhost/zakii/users/create" class="btn btn-primary">Add User</a>
+            <a href="{{route('supplier')}}" class="btn btn-primary">Add Supplier</a>
             <br /> <br />
           
 
@@ -41,18 +39,44 @@
               <table id="userTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Name</th>
+                <th>SL</th>
+                  <th>Supplier Name</th>
                   <th>Phone</th>
-                  <th>Group</th>
-
-                   <th>Action</th>
-                    </tr>
+                  <th>address</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                    
+                
+                </tr>
                 </thead>
 
                 
                 <tbody>
+
+                @foreach($supplier as $supp)
+                        <tr>
+                            <td>{{$supp->id}}</td>
+                            <td>{{$supp->supplier_name}}</td>
+                            <td>{{$supp->phone}}</td>
+                            <td>{{$supp->address}}</td>
+                            <td>{{$supp->email}}</td>
+
+                            <td class="">
+                              <a href="#"><i class="material-icons">cancel</i></a>
+                              <a href="#"><i class="material-icons">edit</i></a>
+                              
+                            </td>
+                            
+                            
+                            {{-- <td>{{$category->active}}</td> --}}
+                            {{-- <td class="">
+                                <a href="#"><i class="material-icons">cancel</i></a>
+                                <a href="#"><i class="material-icons">edit</i></a>
+                                
+                            </td> --}}
+
+                        </tr>				
+                        @endforeach()
                  </tbody>
               </table>
             </div>
@@ -70,14 +94,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#userTable').DataTable();
-
-      $("#mainUserNav").addClass('active');
-      $("#manageUserNav").addClass('active');
-    });
-  </script>
+  
 
 </div>
 @endsection

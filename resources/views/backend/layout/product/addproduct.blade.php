@@ -29,18 +29,18 @@
 
         <div id="messages"></div>
 
-        
+
 
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Add Product</h3>
           </div>
           <!-- /.box-header -->
-           <form role="form" action="{{route('productadded')}}" method="post"> {{--enctype="multipart/form-data"> --}}
+           <form role="form" action="{{route('productadded')}}" method="post" enctype="multipart/form-data">
             @csrf
               <div class="box-body">
 
-                
+
                 <div class="form-group">
 
                   <label for="product_image">Image</label>
@@ -56,34 +56,20 @@
                   <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name" autocomplete="off"/>
                 </div>
 
-                
-
-                <div class="form-group">
-                  <label for="price">Buy Price</label>
-                  <input type="text" class="form-control" id="price" name="buy_price" placeholder="Enter price" autocomplete="off" />
-                </div>
 
 
-                <div class="form-group">
-                  <label for="price">Sell Price</label>
-                  <input type="text" class="form-control" id="price" name="sell_price" placeholder="Enter price" autocomplete="off" />
-                </div>
 
 
-                <div class="form-group">
-                  <label for="qty">Qty</label>
-                  <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty" autocomplete="off" />
-                </div>
 
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter 
+                  <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter
                   description" autocomplete="off">
                   </textarea>
                 </div>
 
-                
-                
+
+
 
                 <div class="form-group">
                   <label for="category">Category</label>
@@ -93,11 +79,11 @@
                     <option value="{{$add->id}}">{{$add->category_name}}</option>
 
                     @endforeach
-                    
+
                     </select>
                 </div>
 
-                
+
 
                 <div class="form-group">
                   <label for="store">Availability</label>
@@ -122,7 +108,7 @@
       <!-- col-md-12 -->
     </div>
     <!-- /.row -->
-    
+
 
   </section>
   <!-- /.content -->
@@ -136,11 +122,11 @@
 
     $("#mainProductNav").addClass('active');
     $("#addProductNav").addClass('active');
-    
-    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
+
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
         'onclick="alert(\'Call your custom code here.\')">' +
         '<i class="glyphicon glyphicon-tag"></i>' +
-        '</button>'; 
+        '</button>';
     $("#product_image").fileinput({
         overwriteInitial: true,
         maxFileSize: 1500,
@@ -160,7 +146,7 @@
 
   });
 </script>
-  
+
 <div>
 </div>
 @endsection

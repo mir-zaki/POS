@@ -10,7 +10,7 @@
     <section class="content-header">
       <h1>
         Manage
-        <small>Users</small>
+        <small>Supplier</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -23,54 +23,20 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-md-12 col-xs-12">
-          
-                      <div></div>
-          
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Add User</h3>
-            </div>
-            <form role="form" action="" method="post">
+
+          <div>
+
+          </div>
+
+          <form role="form" action="{{route('supplieradd')}}" method="post"> {{--enctype="multipart/form-data"> --}}
+            @csrf
               <div class="box-body">
 
-                
                 <div class="form-group">
-                  <label for="groups">Groups</label>
-                  <select class="form-control" id="groups" name="groups">
-                    <option value="">Select Groups</option>
-                                          <option value="4">shop boy</option>
-                                      </select>
+                  <label for="suppliername">Supplier name</label>
+                  <input type="text" class="form-control" id="supplier_name" name="supplier_name" placeholder="Supplier name" autocomplete="off">
                 </div>
 
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                  <label for="cpassword">Confirm password</label>
-                  <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                  <label for="fname">First name</label>
-                  <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                  <label for="lname">Last name</label>
-                  <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" autocomplete="off">
-                </div>
 
                 <div class="form-group">
                   <label for="phone">Phone</label>
@@ -78,17 +44,16 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="gender">Gender</label>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="gender" id="male" value="1">
-                      Male
-                    </label>
-                    <label>
-                      <input type="radio" name="gender" id="female" value="2">
-                      Female
-                    </label>
-                  </div>
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" id="address" name="address" placeholder="Address" autocomplete="off">
+                </div>
+
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off">
+                </div>
+
                 </div>
 
               </div>
@@ -96,7 +61,7 @@
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="http://localhost/zakii/users/" class="btn btn-warning">Back</a>
+                <a href="" class="btn btn-warning">Back</a>
               </div>
             </form>
           </div>
@@ -105,7 +70,7 @@
         <!-- col-md-12 -->
       </div>
       <!-- /.row -->
-      
+
 
     </section>
     <!-- /.content -->
@@ -118,11 +83,11 @@
 
     $("#mainUserNav").addClass('active');
     $("#createUserNav").addClass('active');
-  
+
   });
 </script>
 
- 
+
 
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

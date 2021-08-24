@@ -40,7 +40,6 @@
                   <th>Supplier Name</th>
                   <th>Product Name</th>
                   <th>Buy Price</th>
-                  <th>Sell Price</th>
                   <th>Qty</th>
                   {{-- <th>category</th> --}}
                   <th>Action</th>
@@ -48,13 +47,12 @@
                 </thead>
                 <tbody>
 
-                    @foreach($pur as $purc)
+                    @foreach($purchasemanage as $purc)
                     <tr>
                         <td>{!!$purc->purchase_date!!}</td>
                         <td>{{$purc->Supplier->supplier_name}}</td>
                         <td>{{$purc->Product->product_name}}</td>
                         <td>{{$purc->buy_price}}</td>
-                        <td>{{$purc->sell_price}}</td>
                         <td>{{$purc->qty}}</td>
                         {{-- <td>{{$purc->category->category_name}}</td> --}}
 

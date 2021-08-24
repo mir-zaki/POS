@@ -39,6 +39,7 @@
                   <th>Image</th>
 
                   <th>Product Name</th>
+                  <th>Sell Price</th>
                   <th>Description</th>
                   <th>Category</th>
                    <th>Availability</th>
@@ -50,6 +51,7 @@
                         <tr>
                             <td>{{$product->product_image}}</td>
                             <td>{{$product->product_name}}</td>
+                            <td>{{$product->sell_price}}</td>
                             <td>{!!$product->description!!}</td>
                             <td>{{$product->category->category_name}}</td>
                             <td>{{$product->availability}}</td>

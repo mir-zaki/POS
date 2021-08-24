@@ -23,22 +23,23 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-md-12 col-xs-12">
-          
+
                       <div></div>
-          
+
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Add Customers</h3>
             </div>
-            <form role="form" action="" method="post">
+            <form role="form" action="{{route('customer_add')}}" method="post">
+              @csrf
               <div class="box-body">
 
-                
-                
+
+
 
                 <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
+                  <label for="username">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Type Customer Name" autocomplete="off">
                 </div>
 
                 <div class="form-group">
@@ -46,36 +47,20 @@
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off">
                 </div>
 
-                
+
 
                 <div class="form-group">
-                  <label for="fname">First name</label>
-                  <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" autocomplete="off">
+                  <label for="fname">Address</label>
+                  <input type="text" class="form-control" id="address" name="address" placeholder="Address" autocomplete="off">
                 </div>
 
-                <div class="form-group">
-                  <label for="lname">Last name</label>
-                  <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" autocomplete="off">
-                </div>
 
                 <div class="form-group">
                   <label for="phone">Phone</label>
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" autocomplete="off">
                 </div>
 
-                <div class="form-group">
-                  <label for="gender">Gender</label>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="gender" id="male" value="1">
-                      Male
-                    </label>
-                    <label>
-                      <input type="radio" name="gender" id="female" value="2">
-                      Female
-                    </label>
-                  </div>
-                </div>
+
 
               </div>
               <!-- /.box-body -->
@@ -91,7 +76,7 @@
         <!-- col-md-12 -->
       </div>
       <!-- /.row -->
-      
+
 
     </section>
     <!-- /.content -->
@@ -104,11 +89,11 @@
 
     $("#mainUserNav").addClass('active');
     $("#createUserNav").addClass('active');
-  
+
   });
 </script>
 
- 
+
 
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

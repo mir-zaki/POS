@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Purchase
+            Point of Sell
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Purchase</li>
+            <li class="active">POS</li>
         </ol>
     </section>
 
@@ -24,7 +24,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Add Purchase</h3>
+                        <h3 class="box-title">POS</h3>
                     </div>
                     <!-- /.box-header -->
                     <form role="form" action="{{ route('Purchase_add') }}" method="post">
@@ -35,7 +35,7 @@
 
 
                             <div class="form-group">
-                                <label for="">Purchase Date</label>
+                                <label for="">Date</label>
                                 <input type="text" class="form-control  date" data-provide="datepicker"
                                     name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
                                     value="2021-08-22">
@@ -47,16 +47,16 @@
 
 
                             <div class="form-group">
-                                <label for="supplier_name">Supplier</label>
+                                <label for="supplier_name">Customer</label>
                                 <select type="text" class="form-control select_group"
 
 
                                 id="supplier_name" name="supplier_name"
                                     placeholder="supplier" autocomplete="off">
-                                    <option>Select Supplier</option>
-                                    @foreach ($supplier as $add)
+                                    <option>Walk in Customer</option>
+                                    @foreach ($customer as $add)
 
-                                    <option value="{{$add->id}}">{{$add->supplier_name}}</option>
+                                    <option value="{{$add->id}}">{{$add->name}}</option>
 
                                 @endforeach
                             </select>
@@ -145,14 +145,14 @@
                           </thead>
                           <tbody>
 
-                            @foreach($pur as $purc)
+                            {{-- @foreach($pur as $purc)
                             <tr>
                                 <td>{!!$purc->id!!}</td>
                                 <td>{{$purc->Product->product_name}}</td>
                                 <td>{{$purc->buy_price}}</td>
                                 <td>{{$purc->qty}}</td>
                                 <td>100</td>
-                                {{-- <td>{{$purc->category->category_name}}</td> --}}
+
 
 
 
@@ -167,7 +167,7 @@
 
 
                             </tr>
-                            @endforeach()
+                            @endforeach() --}}
 
 
                       </tbody>

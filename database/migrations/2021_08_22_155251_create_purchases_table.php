@@ -19,7 +19,6 @@ class CreatePurchasesTable extends Migration
             $table->integer('product_id');
             $table->string('purchase_date');
             $table->string('buy_price');
-            $table->string('sell_price');
             $table->string('qty');
              $table->timestamps();
         });

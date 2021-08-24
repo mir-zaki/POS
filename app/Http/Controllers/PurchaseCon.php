@@ -23,10 +23,10 @@ class PurchaseCon extends Controller
 
     public function purchase_add ()
     {
-        $pur=Purchase::all();
+        $purchasemanage=Purchase::all();
         // dd($pur->all());
 
-        return view('backend.layout.purchase.managepurchase',compact('pur'));
+        return view('backend.layout.purchase.managepurchase',compact('purchasemanage'));
 
     }
 
@@ -43,8 +43,28 @@ Purchase::create([
             'supplier_id'=>$purchase->supplier_name,
             'product_id'=>$purchase->product_name,
             'buy_price'=>$purchase->buy_price,
-            'sell_price'=>$purchase->sell_price,
             'qty'=>$purchase->qty,
+            // 'category_id'=>$purchase->category,
+
+
+
+        ]);
+        return redirect()->back();
+}
+
+public function purchases_manage (Request $purchasemanage)
+    {
+
+    //dd($purchase->all());
+
+
+
+Purchase::create([
+            'purchase_date'=>$purchasemanage->purchase_date,
+            'supplier_id'=>$purchasemanage->supplier_name,
+            'product_id'=>$purchasemanage->product_name,
+            'buy_price'=>$purchasemanage->buy_price,
+            'qty'=>$purchasemanage->qty,
             // 'category_id'=>$purchase->category,
 
 

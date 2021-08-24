@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardCon;
 use App\Http\Controllers\LoginCon;
 use App\Http\Controllers\CategoryCon;
 use App\Http\Controllers\CustomerCon;
+use App\Http\Controllers\PosCon;
 use App\Http\Controllers\SupplierCon;
 use App\Http\Controllers\ProductCon;
 use App\Http\Controllers\PurchaseCon;
@@ -47,6 +48,12 @@ Route::get('/user/manage',[UserCon::class,'usermanage'])->name('usermanage');
 Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
 //user end
 
+//user pos
+Route::get('/pos',[PosCon::class,'pos'])->name('pos');
+// Route::get('/pos/manage',[UserCon::class,'usermanage'])->name('usermanage');
+// Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
+//user pos
+
 //customer start
 Route::get('/customer',[CustomerCon::class,'customers'])->name('customer');
 Route::get('/customer/manage',[CustomerCon::class,'customermanage'])->name('customer_manage');
@@ -80,6 +87,7 @@ Route::post('/product/add',[ProductCon::class,'products'])->name('productadded')
 Route::get('/purchase',[PurchaseCon::class,'purchaseadd'])->name('Purchase');
 Route::get('/purchaseadd',[PurchaseCon::class,'purchase_add'])->name('Purchaseadd');
 Route::post('/purchase/add',[PurchaseCon::class,'purchases'])->name('Purchase_add');
+Route::post('/purchase/manage',[PurchaseCon::class,'purchases_manage'])->name('Purchase_manage');
 // purchase
 
 // stock

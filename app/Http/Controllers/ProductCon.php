@@ -26,19 +26,20 @@ class ProductCon extends Controller
 
     public function products (Request $addproduct)
     {
-        
+
     //   dd($addproduct->all());
-   
+
 
 
 product::create([
             'product_image'=>$addproduct->product_image,
             'product_name'=>$addproduct->product_name,
+            'sell_price'=>$addproduct->sell_price,
             'description'=>$addproduct->description,
             'category_id'=>$addproduct->category,
             'availability'=>$addproduct->availability,
-        
-            
+
+
         ]);
         return redirect()->route('products');
 }

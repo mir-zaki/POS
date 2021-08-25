@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginCon;
 use App\Http\Controllers\CategoryCon;
 use App\Http\Controllers\CustomerCon;
 use App\Http\Controllers\PosCon;
+use App\Http\Controllers\PaymentCon;
 use App\Http\Controllers\SupplierCon;
 use App\Http\Controllers\ProductCon;
 use App\Http\Controllers\PurchaseCon;
@@ -69,6 +70,13 @@ Route::post('/supplieradd',[SupplierCon::class,'supplieradd'])->name('supplierad
 //dashboard
 Route::get('/dashboard',[DashboardCon::class,'dashboard'])->name('dash');
 //dashboard
+
+
+//payment
+Route::get('/addpay',[PaymentCon::class,'addpay'])->name('addpay');
+Route::get('/payment/manage',[PaymentCon::class,'paymanage'])->name('paymanage');
+Route::post('/payments',[PaymentCon::class,'payments'])->name('payments');
+//payment
 
 
 // category start

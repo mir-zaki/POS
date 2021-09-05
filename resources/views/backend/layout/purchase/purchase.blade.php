@@ -33,19 +33,6 @@
                         <div class="box-body">
 
 
-
-                            <div class="form-group">
-                                <label for="">Purchase Date</label>
-                                <input type="text" class="form-control  date" data-provide="datepicker"
-                                    name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
-                                    value="2021-08-22">
-                            </div>
-
-
-
-
-
-
                             <div class="form-group">
                                 <label for="supplier_name">Supplier</label>
                                 <select type="text" class="form-control select_group"
@@ -54,11 +41,11 @@
                                 id="supplier_name" name="supplier_name"
                                     placeholder="supplier" autocomplete="off">
                                     <option>Select Supplier</option>
-                                    @foreach ($supplier as $add)
+                                    {{-- @foreach ($supplier as $add)
 
                                     <option value="{{$add->id}}">{{$add->supplier_name}}</option>
 
-                                @endforeach
+                                @endforeach --}}
                             </select>
 
                             </div>
@@ -72,50 +59,28 @@
 
 
                             <div class="form-group">
-                                <label for="product_name">Product name</label>
-                                <select type="text" class="form-control select_group" id="product_name" name="product_name"
+                                <label for="product_name">Challan No</label>
+                                <select type="text" class="form-control" id="Challan_no" name="Challan_no"
                                     placeholder="Enter product name" autocomplete="off">
-                                    <option>Select Product</option>
-                                @foreach ($product as $add)
 
-                                    <option value="{{$add->id}}">{{$add->product_name}}</option>
-
-                                @endforeach
                                 </select>
                             </div>
 
 
 
                             <div class="form-group">
-                                <label for="price">Buy Price</label>
-                                <input type="text" class="form-control" id="price" name="buy_price"
-                                    placeholder="Enter price" autocomplete="off" />
+                                <label for="price">Total Purchase</label>
+                                <input type="text" class="form-control" id="total_Purchase" name="total_Purchase"
+                                    placeholder="Total Purchase" autocomplete="off" />
                             </div>
 
 
 
                             <div class="form-group">
-                                <label for="qty">Qty</label>
-                                <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty"
+                                <label for="qty">Received By</label>
+                                <input type="text" class="form-control" id="received" name="received" placeholder="received"
                                     autocomplete="off" />
                             </div>
-
-
-                            {{-- <div class="form-group">
-                                <label for="category">Category</label>
-                                <select class="form-control select_group" id="category" name="category"
-                                    multiple="multiple">
-
-                                @foreach ($categories as $add)
-
-                                    <option value="{{$add->id}}">{{$add->category_name}}</option>
-
-                                @endforeach
-
-
-                                </select>
-                            </div> --}}
-
 
 
 
@@ -128,60 +93,6 @@
                         </div>
                     </form>
 
-                    <form role="form" action="{{ route('Purchase_manage') }}" method="post">
-                        @csrf
-                    <div class="box-body">
-                        <table id="manageTable" class="table table-bordered table-striped">
-                          <thead>
-                          <tr>
-                            <th style="width:80px">SL</th>
-                            <th>Product Name</th>
-                            <th>Buy Price</th>
-                            <th>Qty</th>
-                            <th>Sub Total</th>
-                            <th style="width:50px">
-                                <i class="fa fa-trash"></i>
-                            </tr>
-                          </thead>
-                          <tbody>
-
-                            @foreach($pur as $purc)
-                            <tr>
-                                <td>{!!$purc->id!!}</td>
-                                <td>{{$purc->Product->product_name}}</td>
-                                <td>{{$purc->buy_price}}</td>
-                                <td>{{$purc->qty}}</td>
-                                <td>100</td>
-                                {{-- <td>{{$purc->category->category_name}}</td> --}}
-
-
-
-
-                                <td class="">
-                                  <a href="#"><i class="fa fa-trash"></i></a>
-
-
-                                </td>
-
-
-
-
-                            </tr>
-                            @endforeach()
-
-
-                      </tbody>
-
-                        </table>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            {{-- <a href="{{route('Purchase_manage')}}" type="button" class="btn btn-info" >Submit</a> --}}
-                        </div>
-
-
-                        
-
-                    </form>
 
                       </div>
                     <!-- /.box-body -->

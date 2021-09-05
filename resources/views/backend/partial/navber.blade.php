@@ -12,7 +12,7 @@
             </li>
 
             <li id="brandNav">
-                <a href="http://localhost/zakii/pos/">
+                <a href="{{route('pos')}}">
                     <i class="fa fa-shopping-cart"></i><span>POS</span>
                 </a>
             </li>

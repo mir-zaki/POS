@@ -2,19 +2,16 @@
 @section('content')
 
 
-
-
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Manage
-            <small>Customers</small>
+            Stocks</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Users</li>
+            <li class="active">Stocks</li>
         </ol>
     </section>
 
@@ -24,47 +21,35 @@
         <div class="row">
             <div class="col-md-12 col-xs-12">
 
+                <div id="messages"></div>
 
-                <a href="{{ route('customer') }}" class="btn btn-primary">Add Customers</a>
-                <br /> <br />
 
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Manage Customers</h3>
+                        <h3 class="box-title">Manage Stocks</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table id="userTable" class="table table-bordered table-striped">
+                        <table id="manageTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Pdone</th>
-                                    <th>Action</th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Buy Price</th>
+                                    <th>Sell Price</th>
+                                    <th>Purchases</th>
+                                    <th>Available Stock</th>
                                 </tr>
                             </thead>
-
-
                             <tbody>
-                                @foreach($customer as $customers )
-                                    <tr>
-                                        <td>{{ $customers->id}}</td>
-                                        <td>{{ $customers->name }}</td>
-                                        <td>{{ $customers->email }}</td>
-                                        <td>{{ $customers->address }}</td>
-                                        <td>{{ $customers->phone }}</td>
-                                        <td>aa</td>
 
-
-                                    </tr>
-
-                                @endforeach
 
                             </tbody>
+
                         </table>
+
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -80,7 +65,22 @@
 </div>
 <!-- /.content-wrapper -->
 
+<!-- remove brand modal -->
 
 
+</form>
+
+
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+<div class="control-sidebar-bg"></div>
 </div>
+
+
 @endsection

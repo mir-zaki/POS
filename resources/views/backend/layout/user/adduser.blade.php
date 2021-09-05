@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label for="groups">Groups</label>
                                 <select class="form-control" id="groups" name="groups">
-                                    <option value="">Select Groups</option>
+                                    <option value="">Manager</option>
                                     <option value="4">shop boy</option>
                                 </select>
                             </div>
@@ -49,10 +49,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                <label for="fname">Full Name</label>
+                                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name"
                                     autocomplete="off">
                             </div>
+
+
 
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -60,23 +62,9 @@
                                     placeholder="Password" autocomplete="off">
                             </div>
 
-                            <div class="form-group">
-                                <label for="cpassword">Confirm password</label>
-                                <input type="password" class="form-control" id="cpassword" name="cpassword"
-                                    placeholder="Confirm Password" autocomplete="off">
-                            </div>
 
-                            <div class="form-group">
-                                <label for="fname">First name</label>
-                                <input type="text" class="form-control" id="fname" name="fname" placeholder="First name"
-                                    autocomplete="off">
-                            </div>
 
-                            <div class="form-group">
-                                <label for="lname">Last name</label>
-                                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name"
-                                    autocomplete="off">
-                            </div>
+
 
                             <div class="form-group">
                                 <label for="phone">Phone</label>
@@ -84,19 +72,7 @@
                                     autocomplete="off">
                             </div>
 
-                            <div class="form-group">
-                                <label for="gender">Gender</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" id="male" value="1">
-                                        Male
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="gender" id="female" value="2">
-                                        Female
-                                    </label>
-                                </div>
-                            </div>
+
 
                         </div>
                         <!-- /.box-body -->

@@ -30,6 +30,15 @@ class PurchaseCon extends Controller
 
     }
 
+    public function purchase ()
+    {
+
+            
+
+        return view('backend.layout.purchase.purchase');
+
+    }
+
 
     public function purchases (Request $purchase)
     {

@@ -66,12 +66,7 @@
 
 
 
-
-
-
-
-
-                            <div class="form-group">
+                             <div class="form-group">
                                 <label for="product_name">Product name</label>
                                 <select type="text" class="form-control select_group" id="product_name" name="product_name"
                                     placeholder="Enter product name" autocomplete="off">
@@ -86,10 +81,21 @@
 
 
 
+
+
                             <div class="form-group">
-                                <label for="price">Buy Price</label>
+                                <label for="price">Price</label>
                                 <input type="text" class="form-control" id="price" name="buy_price"
                                     placeholder="Enter price" autocomplete="off" />
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="price">Discount</label>
+                                <input type="text" class="form-control" id="discount" name="discount"
+                                    placeholder="%" autocomplete="off" />
                             </div>
 
 

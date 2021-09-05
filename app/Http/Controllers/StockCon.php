@@ -10,10 +10,10 @@ class StockCon extends Controller
 {
     public function stock ()
     {
-        $pur=Purchase::all();
+        $stock=Purchase::all();
         // dd($cat->all());
 
-        return view('backend.layout.purchase.managepurchase',compact('pur'));
+        return view('backend.layout.stock.stocks',compact('stock'));
 
     }
 }

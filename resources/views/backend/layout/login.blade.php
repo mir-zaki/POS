@@ -33,11 +33,15 @@
 
 </head>
 
+
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
             <a href="http://localhost/zakii/auth"><b>Login</b></a>
         </div>
+
+
+
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to start your session</p>
@@ -45,7 +49,18 @@
 
 
 
-            <form action="http://localhost/zakii/auth/login" method="post">
+            <form action="{{route('login')}}" method="post">
+                @csrf
+                <div>
+
+                    @if(session()->has('message'))
+                   <div class="row" style="padding: 50px;">
+                       <span class="alert alert-success">{{session()->get('message')}}</span>
+                   </div>
+                   @endif
+
+                </div>
+
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" name="username" id="username" placeholder="User Name"
                         autocomplete="off">
@@ -67,12 +82,8 @@
                 </div> --}}
 
                 <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                        </div>
+                    <div class="col-xs-4">
+
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
@@ -80,6 +91,8 @@
                     </div>
                     <!-- /.col -->
                 </div>
+
+                <p style="color:rgb(255, 0, 0);">if you forget your password, contact to admin...</p>
             </form>
 
         </div>

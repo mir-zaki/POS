@@ -43,4 +43,20 @@ category::create([
         ]);
         return redirect()->back();
     }
+
+    public function categories_delete ($id)
+    {
+
+        $categories=category::find($id);
+        // dd($customer);
+        if ($categories){
+            $categories->delete();
+            return redirect()->back()->with('message','Category is Deleted');
+
+        }
+        return redirect()->back()->with('message','Category is not Deleted');
+
+
+
+    }
 }

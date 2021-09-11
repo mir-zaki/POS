@@ -24,8 +24,16 @@ class ProductCon extends Controller
 
 
 
-    public function products (Request $addproduct)
+    public function products (Request  $addproduct)
     {
+        // $fileName='';
+        //     if($request->hasFile('product_image'))
+        //     {
+        //         $file=$request->file('product_image');
+        //        //generate file name here
+        //         $fileName=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+        //         $file->storeAs('/uploads',$fileName);
+        //     }
 
     //   dd($addproduct->all());
 
@@ -43,4 +51,20 @@ product::create([
         ]);
         return redirect()->route('products');
 }
+
+public function product_delete ($id)
+    {
+
+        $products=product::find($id);
+        // dd($customer);
+        if ($products){
+            $products->delete();
+            return redirect()->back()->with('message','Product is Deleted');
+
+        }
+        return redirect()->back()->with('message','Product is not Deleted');
+
+
+
+    }
 }

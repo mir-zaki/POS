@@ -27,6 +27,15 @@
 
                 <a href="{{ route('customer') }}" class="btn btn-primary">Add Customers</a>
                 <br /> <br />
+         <div>
+
+             @if(session()->has('message'))
+            <div class="row" style="padding: 20px;">
+                <span class="alert alert-success">{{session()->get('message')}}</span>
+            </div>
+            @endif
+
+         </div>
 
 
                 <div class="box">
@@ -42,7 +51,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Address</th>
-                                    <th>Pdone</th>
+                                    <th>Phone</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -51,12 +60,17 @@
                             <tbody>
                                 @foreach($customer as $customers )
                                     <tr>
-                                        <td>{{ $customers->id}}</td>
+                                        <td>{{ $loop->iteration}}</td>
                                         <td>{{ $customers->name }}</td>
                                         <td>{{ $customers->email }}</td>
                                         <td>{{ $customers->address }}</td>
                                         <td>{{ $customers->phone }}</td>
-                                        <td>aa</td>
+                                        <td class="">
+                                            {{-- <a href=""><i class="material-icons">details</i></a> --}}
+                                            <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('customer_delete',$customers->id)}}}"><i class="material-icons">cancel</i></a>
+                                            <a href="{{route('customer_edit',$customers->id)}}}"><i class="material-icons">edit</i></a>
+
+                                          </td>
 
 
                                     </tr>

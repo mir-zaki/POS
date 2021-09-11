@@ -26,11 +26,23 @@
 
            <a href="{{route('product')}}" class="btn btn-primary">Add Product</a>
             <br /> <br />
+            <div>
+
+                @if(session()->has('message'))
+               <div class="row" style="padding: 20px;">
+                   <span class="alert alert-success">{{session()->get('message')}}</span>
+               </div>
+               @endif
+
+            </div>
 
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Manage Products</h3>
             </div>
+            <br /> <br />
+
+
             <!-- /.box-header -->
             <div class="box-body">
               <table id="manageTable" class="table table-bordered table-striped">
@@ -49,7 +61,9 @@
                 <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td>{{$product->product_image}}</td>
+                            <td>
+                                <img src="{{url('/uploads/'.$product->product_image)}}" width="50px" alt="product image">
+                            </td>
                             <td>{{$product->product_name}}</td>
                             <td>{{$product->sell_price}}</td>
                             <td>{!!$product->description!!}</td>
@@ -57,7 +71,7 @@
                             <td>{{$product->availability}}</td>
 
                             <td class="">
-                              <a href="#"><i class="material-icons">cancel</i></a>
+                              <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('product_delete',$product->id)}}"><i class="material-icons">cancel</i></a>
                               <a href="#"><i class="material-icons">edit</i></a>
 
                             </td>

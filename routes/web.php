@@ -32,7 +32,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[LoginCon::class,'log'])->name('log');
 Route::post('/login',[LoginCon::class,'login_user'])->name('login');
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
+// ,'middleware'=>'auth'
+
+{
+    Route::get('/logout',[LoginCon::class,'logout'])->name('logout');
+
 
 
 
@@ -55,7 +60,10 @@ Route::group(['prefix'=>'admin'],function(){
     //customer start
     Route::get('/customer',[CustomerCon::class,'customers'])->name('customer');
     Route::get('/customer/manage',[CustomerCon::class,'customermanage'])->name('customer_manage');
+    Route::get('/customer/delete/{id}',[CustomerCon::class,'customerdelete'])->name('customer_delete');
     Route::post('/customeradd',[CustomerCon::class,'customeradd'])->name('customer_add');
+    Route::get('/customer/edit/{id}',[CustomerCon::class,'customeredit'])->name('customer_edit');
+    Route::put('/customer/update/{id}',[CustomerCon::class,'customerupdate'])->name('customer_update');
     //customer end
 
     //supplier start
@@ -79,12 +87,14 @@ Route::group(['prefix'=>'admin'],function(){
     // category start
     Route::get('/category',[CategoryCon::class,'categories'])->name('category');
     Route::get('/category/{id}details',[CategoryCon::class,'categories_details'])->name('categories_details');
+    Route::get('/category/delete/{id}',[CategoryCon::class,'categories_delete'])->name('categories_delete');
     Route::post('/categories',[CategoryCon::class,'category_add'])->name('categoryadd');
     // category end
 
     // product
     Route::get('/product',[ProductCon::class,'productadd'])->name('product');
     Route::get('/products',[ProductCon::class,'product_add'])->name('products');
+    Route::get('/products/delete/{id}',[ProductCon::class,'product_delete'])->name('product_delete');
     Route::post('/product/add',[ProductCon::class,'products'])->name('productadded');
     // product
 

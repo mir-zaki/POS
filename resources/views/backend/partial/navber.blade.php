@@ -162,7 +162,7 @@
                 <i class="fa fa-wrench"></i> <span>Setting</span></a></li>
 
         <!-- user permission info -->
-        <li><a href="http://localhost/zakii/auth/logout"><i class="glyphicon glyphicon-log-out"></i> </i>
+        <li><a href="{{route('logout')}}"><i class="glyphicon glyphicon-log-out"></i> </i>
                 <span>Logout</span></a></li>
 
         </ul>

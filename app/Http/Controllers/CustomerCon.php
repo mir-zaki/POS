@@ -25,6 +25,8 @@ class CustomerCon extends Controller
 
     }
 
+
+
     public function customeradd (Request $addcustomer)
     {
 
@@ -40,7 +42,54 @@ Customer::create([
 
 
         ]);
-        return redirect()->route('customer_manage');
+        return redirect()->route('customer_manage')->with('message','Customer is Added');
 }
+public function customerdelete ($id)
+    {
+
+        $customer=Customer::find($id);
+        // dd($customer);
+        if ($customer){
+            $customer->delete();
+            return redirect()->back()->with('message','Customer is Deleted');
+
+        }
+        return redirect()->back()->with('message','Customer is not Deleted');
+
+
+
+    }
+
+    public function customeredit ($id)
+
+    {
+
+        $customers=Customer::find($id);
+        // dd($customers->all());
+
+        return view('backend.layout.customer.editcus',compact('customers'));
+
+    }
+
+    public function customerupdate (Request $request, $id)
+    {
+        // dd($request->all());
+
+        $customers=Customer::find($id);
+
+        $customers->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+
+
+        ]);
+
+        return redirect()->route('customer_manage')->with('message','Customer Information is Updated');
+
+    }
+
+
 
 }

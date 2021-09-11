@@ -35,10 +35,11 @@
 
 
                             <div class="form-group">
-                                <label for="groups">Groups</label>
-                                <select class="form-control" id="groups" name="groups">
-                                    <option value="">Manager</option>
-                                    <option value="4">shop boy</option>
+                                <label for="groups">Type</label>
+                                <select class="form-control" id="groups" name="type">
+                                    <option value="1">Admin</option>
+                                    <option value="2">Manager</option>
+                                    <option value="3">shop boy</option>
                                 </select>
                             </div>
 

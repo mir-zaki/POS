@@ -41,7 +41,7 @@
               <div class="box-body">
 
 
-                <div class="form-group">
+                {{-- <div class="form-group">
 
                   <label for="product_image">Image</label>
                   <div class="kv-avatar">
@@ -49,7 +49,13 @@
                           <input id="product_image" name="product_image" type="file">
                       </div>
                   </div>
+                </div> --}}
+
+                <div class="form-group">
+                    <label for="description">Upload Product Image</label>
+                    <input type="file" class="form-control" name="product_image">
                 </div>
+
 
                 <div class="form-group">
                   <label for="product_name">Product name</label>
@@ -80,7 +86,7 @@
 
                 <div class="form-group">
                   <label for="category">Category</label>
-                  <select class="form-control select_group" id="category" name="category" multiple="multiple">
+                  <select class="form-control select_group" id="category" name="category">
                     @foreach ($product as $add)
 
                     <option value="{{$add->id}}">{{$add->category_name}}</option>

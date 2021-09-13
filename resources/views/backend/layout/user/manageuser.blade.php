@@ -8,73 +8,89 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Manage
-        <small>Users</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Users</li>
-      </ol>
+        <h1>
+            Manage
+            <small>Users</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Users</li>
+        </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-md-12 col-xs-12">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
 
-                                       
-                      <a href="http://localhost/zakii/users/create" class="btn btn-primary">Add User</a>
-            <br /> <br />
-          
 
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Manage Users</h3>
+                <a href="" class="btn btn-primary">Add User</a>
+                <br /> <br />
+
+
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Manage Users</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="userTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Type</th>
+                                    <th>Username</th>
+                                    <th>Full Name</th>
+                                    <th>Phone</th>
+
+
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            @foreach($adduser as $user )
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->type }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->fullname }}</td>
+                                    <td>{{ $user->phone }}</td>
+
+                                    <td class="">
+                                        {{-- <a href=""><i class="material-icons">details</i></a> --}}
+                                        <a onclick="return confirm('Are you sure you want to delete this item?');"
+                                            href=""><i
+                                                class="material-icons">cancel</i></a>
+                                        <a href=""><i
+                                                class="material-icons">edit</i></a>
+
+                                    </td>
+
+
+                                </tr>
+
+                            @endforeach
+
+
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="userTable" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Name</th>
-                  <th>Phone</th>
-                  <th>Group</th>
-
-                   <th>Action</th>
-                    </tr>
-                </thead>
-
-                
-                <tbody>
-                 </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- col-md-12 -->
         </div>
-        <!-- col-md-12 -->
-      </div>
-      <!-- /.row -->
-      
+        <!-- /.row -->
+
 
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#userTable').DataTable();
 
-      $("#mainUserNav").addClass('active');
-      $("#manageUserNav").addClass('active');
-    });
-  </script>
 
 </div>
 @endsection

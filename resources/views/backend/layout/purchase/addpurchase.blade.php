@@ -45,6 +45,12 @@
 
 
 
+                            <div class="form-group">
+                                <label for="price">Challan No</label>
+                                <input type="text" class="form-control" id="Challan_no" name="Challan_no"
+                                    placeholder="Enter Challan No" autocomplete="off" />
+                            </div>
+
 
                             <div class="form-group">
                                 <label for="supplier_name">Supplier</label>
@@ -62,10 +68,6 @@
                             </select>
 
                             </div>
-
-
-
-
 
 
 
@@ -101,20 +103,12 @@
                             </div>
 
 
-                            {{-- <div class="form-group">
-                                <label for="category">Category</label>
-                                <select class="form-control select_group" id="category" name="category"
-                                    multiple="multiple">
 
-                                @foreach ($categories as $add)
-
-                                    <option value="{{$add->id}}">{{$add->category_name}}</option>
-
-                                @endforeach
-
-
-                                </select>
-                            </div> --}}
+                            <div class="form-group">
+                                <label for="qty">Received By</label>
+                                <input type="text" class="form-control" id="received" name="received" placeholder="received"
+                                    autocomplete="off" />
+                            </div>
 
 
 
@@ -179,7 +173,7 @@
                         </div>
 
 
-                        
+
 
                     </form>
 

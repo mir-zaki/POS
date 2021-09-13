@@ -24,7 +24,7 @@
           <div id="messages"></div>
 
 
-                    <a href="{{route('product')}}" class="btn btn-primary">Add Product</a>
+                    <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
             <br /> <br />
 
           <div class="box">
@@ -36,11 +36,15 @@
               <table id="manageTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>No</th>
+                  <th>Challan No</th>
                   <th>Date</th>
-                  <th>Supplier Name</th>
-                  <th>Product Name</th>
-                  <th>Buy Price</th>
-                  <th>Qty</th>
+                  <th>Supplier</th>
+                  <th>Item</th>
+                  <th>Payable</th>
+                  <th>Paid</th>
+                  <th>Due</th>
+                  <th>Received By</th>
                   {{-- <th>category</th> --}}
                   <th>Action</th>
                   </tr>

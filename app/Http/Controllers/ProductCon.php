@@ -67,4 +67,38 @@ public function product_delete ($id)
 
 
     }
+
+    public function product_edit ($id)
+
+    {
+
+        $product=product::find($id);
+        $products=category::all();
+        // dd($customers->all());
+
+        return view('backend.layout.product.editproduct',compact('product','products'));
+
+    }
+
+    public function product_update (Request $request, $id)
+    {
+        // dd($request->all());
+
+        $product=product::find($id);
+
+        $product->update([
+            'product_image'=>$request->product_image,
+            'product_name'=>$request->product_name,
+            'sell_price'=>$request->sell_price,
+            'description'=>$request->description,
+            'category_id'=>$request->category,
+            'availability'=>$request->availability,
+
+
+        ]);
+
+        return redirect()->route('products')->with('message','Product Information is Updated');
+
+    }
+
 }

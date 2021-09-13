@@ -48,6 +48,7 @@
               <table id="manageTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                    <th>SL</th>
                   <th>Image</th>
 
                   <th>Product Name</th>
@@ -61,6 +62,7 @@
                 <tbody>
                     @foreach($products as $product)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
                                 <img src="{{url('/uploads/'.$product->product_image)}}" width="50px" alt="product image">
                             </td>
@@ -72,7 +74,7 @@
 
                             <td class="">
                               <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('product_delete',$product->id)}}"><i class="material-icons">cancel</i></a>
-                              <a href="#"><i class="material-icons">edit</i></a>
+                              <a href="{{route('product_edit',$product->id)}}"><i class="material-icons">edit</i></a>
 
                             </td>
 

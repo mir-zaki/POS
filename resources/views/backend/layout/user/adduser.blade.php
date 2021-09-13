@@ -30,16 +30,16 @@
                     <div class="box-header">
                         <h3 class="box-title">Add User</h3>
                     </div>
-                    <form role="form" action="" method="post">
+                    <form role="form" action="{{route('useradd')}}" method="post">
+                        @csrf
                         <div class="box-body">
 
 
                             <div class="form-group">
                                 <label for="groups">Type</label>
-                                <select class="form-control" id="groups" name="type">
-                                    <option value="1">Admin</option>
-                                    <option value="2">Manager</option>
-                                    <option value="3">shop boy</option>
+                                <select class="form-control" id="type" name="type">
+                                    <option value="manager">Manager</option>
+                                    <option value="shopboy">shop boy</option>
                                 </select>
                             </div>
 

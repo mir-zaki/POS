@@ -24,11 +24,20 @@
       <div class="row">
         <div class="col-md-12 col-xs-12">
 
-                      
-                    
+
+
             <a href="{{route('supplier')}}" class="btn btn-primary">Add Supplier</a>
             <br /> <br />
-          
+
+            <div>
+
+                @if(session()->has('message'))
+               <div class="row" style="padding: 20px;">
+                   <span class="alert alert-success">{{session()->get('message')}}</span>
+               </div>
+               @endif
+
+            </div>
 
           <div class="box">
             <div class="box-header">
@@ -45,37 +54,37 @@
                   <th>address</th>
                   <th>Email</th>
                   <th>Action</th>
-                    
-                
+
+
                 </tr>
                 </thead>
 
-                
+
                 <tbody>
 
                 @foreach($supplier as $supp)
                         <tr>
-                            <td>{{$supp->id}}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{$supp->supplier_name}}</td>
                             <td>{{$supp->phone}}</td>
                             <td>{{$supp->address}}</td>
                             <td>{{$supp->email}}</td>
 
                             <td class="">
-                              <a href="#"><i class="material-icons">cancel</i></a>
-                              <a href="#"><i class="material-icons">edit</i></a>
-                              
+                              <a href="{{route('supplier_delete',$supp->id)}}"><i class="material-icons">cancel</i></a>
+                              <a href="{{route('supplier_edit',$supp->id)}}"><i class="material-icons">edit</i></a>
+
                             </td>
-                            
-                            
+
+
                             {{-- <td>{{$category->active}}</td> --}}
                             {{-- <td class="">
                                 <a href="#"><i class="material-icons">cancel</i></a>
                                 <a href="#"><i class="material-icons">edit</i></a>
-                                
+
                             </td> --}}
 
-                        </tr>				
+                        </tr>
                         @endforeach()
                  </tbody>
               </table>
@@ -87,14 +96,14 @@
         <!-- col-md-12 -->
       </div>
       <!-- /.row -->
-      
+
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  
+
 
 </div>
 @endsection

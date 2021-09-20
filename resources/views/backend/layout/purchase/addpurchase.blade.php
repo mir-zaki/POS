@@ -76,6 +76,10 @@
                     @php
                         $cart = session()->get('cart');
                     @endphp
+                    {{-- @php
+                        $subtotal={{$products['buy_price']}}*{{$products['qty']}};
+                    @endphp --}}
+
 
                     <form role="form" action="{{ route('Purchase_manage') }}" method="post">
                         @csrf
@@ -88,11 +92,14 @@
                             <th>Buy Price</th>
                             <th>Qty</th>
                             <th>Sub Total</th>
-                            <th style="width:50px">
-                                <i class="fa fa-trash"></i>
+                            <th  style="width:50px">
+                                <a href="{{route('Purchaseforget')}}"><i class="fa fa-trash"></i></a>
+
                             </tr>
                           </thead>
                           <tbody>
+
+                            @if($cart)
                             @foreach($cart as $products)
 
                             <tr>
@@ -101,6 +108,7 @@
                                 <td>{{$products['buy_price']}}</td>
                                 <td>{{$products['qty']}}</td>
                                 <td>100</td>
+                                <td><a href="{{route('Purchaseforget')}}"><i class="fa fa-trash"></i></a></td>
 
                                 {{-- <td class="">
                                   <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('product_delete',$product->id)}}"><i class="material-icons">cancel</i></a>
@@ -113,11 +121,14 @@
 
                             </tr>
                             @endforeach()
-
+                            @endif
 
 
 
                       </tbody>
+                      <tr>
+                          <th>Total</th>
+                      </tr>
 
                         </table>
 
@@ -141,7 +152,7 @@
                                 <label for="">Purchase Date</label>
                                 <input type="text" class="form-control  date" data-provide="datepicker"
                                     name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
-                                    >
+                                    value="">
                             </div>
 
 

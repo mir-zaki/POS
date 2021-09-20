@@ -45,6 +45,7 @@ public function addToCart(Request $request)
 
 
         $product = product::find($request->product_name);
+        
 
         if(!$product) {
 
@@ -62,6 +63,7 @@ public function addToCart(Request $request)
 
             $cart = [
                     $product->id => [
+
                         "product_name" => $product->product_name,
                         "buy_price" => $request->buy_price,
                         "qty" => $request->qty
@@ -89,6 +91,7 @@ public function addToCart(Request $request)
 
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$product->id] = [
+
                         "product_name" => $product->product_name,
                         "buy_price" => $request->buy_price,
                         "qty" => $request->qty
@@ -97,6 +100,17 @@ public function addToCart(Request $request)
         session()->put('cart', $cart);
 
         return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+    public function purchase_forget (Request $request)
+    {
+        if(session()->has('cart'))
+        {
+            $request->session()->forget('cart');
+            return redirect()->back();
+        }
+
+return redirect()->back();
+
     }
 
 

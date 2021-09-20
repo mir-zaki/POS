@@ -108,6 +108,8 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         // purchase
         Route::get('/purchase',[PurchaseCon::class,'purchaseadd'])->name('Purchase');
         Route::get('/purchaseadd',[PurchaseCon::class,'purchase_add'])->name('Purchaseadd');
+        Route::post('/purchase/car/',[PurchaseCon::class,'addToCart'])->name('addToCart');
+        Route::get('/purchase/details',[PurchaseCon::class,'purchase_details'])->name('Purchasedetails');
         Route::post('/purchase/add',[PurchaseCon::class,'purchases'])->name('Purchase_add');
         Route::post('/purchase/manage',[PurchaseCon::class,'purchases_manage'])->name('Purchase_manage');
         // purchase
@@ -120,156 +122,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
 
     });
 
-    Route::group(['prefix'=>'manager','middleware'=>'manager'],function ()
-    {
 
-
-
-        //user start
-        Route::get('/user',[UserCon::class,'user'])->name('user');
-        Route::get('/user/manage',[UserCon::class,'usermanage'])->name('usermanage');
-        Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
-        //user end
-
-        //user pos
-        Route::get('/pos',[PosCon::class,'pos'])->name('pos');
-        // Route::get('/pos/manage',[UserCon::class,'usermanage'])->name('usermanage');
-        // Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
-        //user pos
-
-        //customer start
-        Route::get('/customer',[CustomerCon::class,'customers'])->name('customer');
-        Route::get('/customer/manage',[CustomerCon::class,'customermanage'])->name('customer_manage');
-        Route::get('/customer/delete/{id}',[CustomerCon::class,'customerdelete'])->name('customer_delete');
-        Route::post('/customeradd',[CustomerCon::class,'customeradd'])->name('customer_add');
-        Route::get('/customer/edit/{id}',[CustomerCon::class,'customeredit'])->name('customer_edit');
-        Route::put('/customer/update/{id}',[CustomerCon::class,'customerupdate'])->name('customer_update');
-        //customer end
-
-        //supplier start
-        Route::get('/supplier',[SupplierCon::class,'supplier'])->name('supplier');
-        Route::get('/supplier/manage',[SupplierCon::class,'suppliermanage'])->name('supplier_manage');
-        Route::post('/supplieradd',[SupplierCon::class,'supplieradd'])->name('supplieradd');
-        Route::get('/supplier/delete/{id}',[SupplierCon::class,'supplierdelete'])->name('supplier_delete');
-        Route::get('/supplier/edit/{id}',[SupplierCon::class,'supplieredit'])->name('supplier_edit');
-        Route::put('/supplier/update/{id}',[SupplierCon::class,'supplierupdate'])->name('supplier_update');
-        //supplier end
-
-
-
-
-        //payment
-        Route::get('/addpay',[PaymentCon::class,'addpay'])->name('addpay');
-        Route::get('/payment/manage',[PaymentCon::class,'paymanage'])->name('paymanage');
-        Route::post('/payments',[PaymentCon::class,'payments'])->name('payments');
-        //payment
-
-
-        // category start
-        Route::get('/category',[CategoryCon::class,'categories'])->name('category');
-        Route::get('/category/{id}details',[CategoryCon::class,'categories_details'])->name('categories_details');
-        Route::get('/category/delete/{id}',[CategoryCon::class,'categories_delete'])->name('categories_delete');
-        Route::post('/categories',[CategoryCon::class,'category_add'])->name('categoryadd');
-        // category end
-
-        // product
-        Route::get('/product',[ProductCon::class,'productadd'])->name('product');
-        Route::get('/products',[ProductCon::class,'product_add'])->name('products');
-        Route::post('/product/add',[ProductCon::class,'products'])->name('productadded');
-        Route::get('/products/delete/{id}',[ProductCon::class,'product_delete'])->name('product_delete');
-        Route::get('/products/edit/{id}',[ProductCon::class,'product_edit'])->name('product_edit');
-        Route::put('/products/update/{id}',[ProductCon::class,'product_update'])->name('product_update');
-        // product
-
-        // purchase
-        Route::get('/purchase',[PurchaseCon::class,'purchaseadd'])->name('Purchase');
-        Route::get('/purchaseadd',[PurchaseCon::class,'purchase_add'])->name('Purchaseadd');
-        Route::post('/purchase/add',[PurchaseCon::class,'purchases'])->name('Purchase_add');
-        Route::post('/purchase/manage',[PurchaseCon::class,'purchases_manage'])->name('Purchase_manage');
-        // purchase
-
-        // stock
-        Route::get('/stock',[StockCon::class,'stock'])->name('stock');
-        // Route::get('/purchaseadd',[StockCon::class,'purchase_add'])->name('Purchaseadd');
-        // Route::post('/purchase/add',[StockCon::class,'purchases'])->name('Purchase_add');
-        // stock
-
-
-
-    });
-
-    Route::group(['prefix'=>'shopboy','middleware'=>'shopboy'],function()
-    {
-
-
-
-
-        //user pos
-        Route::get('/pos',[PosCon::class,'pos'])->name('pos');
-        // Route::get('/pos/manage',[UserCon::class,'usermanage'])->name('usermanage');
-        // Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
-        //user pos
-
-        //customer start
-        Route::get('/customer',[CustomerCon::class,'customers'])->name('customer');
-        Route::get('/customer/manage',[CustomerCon::class,'customermanage'])->name('customer_manage');
-        Route::get('/customer/delete/{id}',[CustomerCon::class,'customerdelete'])->name('customer_delete');
-        Route::post('/customeradd',[CustomerCon::class,'customeradd'])->name('customer_add');
-        Route::get('/customer/edit/{id}',[CustomerCon::class,'customeredit'])->name('customer_edit');
-        Route::put('/customer/update/{id}',[CustomerCon::class,'customerupdate'])->name('customer_update');
-        //customer end
-
-        //supplier start
-        Route::get('/supplier',[SupplierCon::class,'supplier'])->name('supplier');
-        Route::get('/supplier/manage',[SupplierCon::class,'suppliermanage'])->name('supplier_manage');
-        Route::post('/supplieradd',[SupplierCon::class,'supplieradd'])->name('supplieradd');
-        Route::get('/supplier/delete/{id}',[SupplierCon::class,'supplierdelete'])->name('supplier_delete');
-        Route::get('/supplier/edit/{id}',[SupplierCon::class,'supplieredit'])->name('supplier_edit');
-        Route::put('/supplier/update/{id}',[SupplierCon::class,'supplierupdate'])->name('supplier_update');
-        //supplier end
-
-
-
-
-        //payment
-        Route::get('/addpay',[PaymentCon::class,'addpay'])->name('addpay');
-        Route::get('/payment/manage',[PaymentCon::class,'paymanage'])->name('paymanage');
-        Route::post('/payments',[PaymentCon::class,'payments'])->name('payments');
-        //payment
-
-
-        // category start
-        Route::get('/category',[CategoryCon::class,'categories'])->name('category');
-        Route::get('/category/{id}details',[CategoryCon::class,'categories_details'])->name('categories_details');
-        Route::get('/category/delete/{id}',[CategoryCon::class,'categories_delete'])->name('categories_delete');
-        Route::post('/categories',[CategoryCon::class,'category_add'])->name('categoryadd');
-        // category end
-
-        // product
-        Route::get('/product',[ProductCon::class,'productadd'])->name('product');
-        Route::get('/products',[ProductCon::class,'product_add'])->name('products');
-        Route::post('/product/add',[ProductCon::class,'products'])->name('productadded');
-        Route::get('/products/delete/{id}',[ProductCon::class,'product_delete'])->name('product_delete');
-        Route::get('/products/edit/{id}',[ProductCon::class,'product_edit'])->name('product_edit');
-        Route::put('/products/update/{id}',[ProductCon::class,'product_update'])->name('product_update');
-        // product
-
-        // purchase
-        Route::get('/purchase',[PurchaseCon::class,'purchaseadd'])->name('Purchase');
-        Route::get('/purchaseadd',[PurchaseCon::class,'purchase_add'])->name('Purchaseadd');
-        Route::post('/purchase/add',[PurchaseCon::class,'purchases'])->name('Purchase_add');
-        Route::post('/purchase/manage',[PurchaseCon::class,'purchases_manage'])->name('Purchase_manage');
-        // purchase
-
-        // stock
-        Route::get('/stock',[StockCon::class,'stock'])->name('stock');
-        // Route::get('/purchaseadd',[StockCon::class,'purchase_add'])->name('Purchaseadd');
-        // Route::post('/purchase/add',[StockCon::class,'purchases'])->name('Purchase_add');
-        // stock
-
-
-
-    });
     Route::get('/logout',[LoginCon::class,'logout'])->name('logout');
 });
 

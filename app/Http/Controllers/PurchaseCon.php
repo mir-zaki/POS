@@ -30,55 +30,75 @@ class PurchaseCon extends Controller
 
     }
 
-    public function purchase ()
+    public function purchase_details ()
     {
 
-            
 
-        return view('backend.layout.purchase.purchase');
+
+        return view('backend.layout.purchase.purchasedetails');
 
     }
 
 
-    public function purchases (Request $purchase)
+public function addToCart(Request $request)
     {
 
-    //dd($purchase->all());
+
+        $product = product::find($request->product_name);
+
+        if(!$product) {
+
+
+            abort(404);
+
+        }
+        //dd($purchase->all());
+
+        $cart = session()->get('cart');
+
+
+        // if cart is empty then this the first product
+        if(!$cart) {
+
+            $cart = [
+                    $product->id => [
+                        "product_name" => $product->product_name,
+                        "buy_price" => $request->buy_price,
+                        "qty" => $request->qty
+                    ]
+            ];
+
+            session()->put('cart', $cart);
 
 
 
-Purchase::create([
-            'purchase_date'=>$purchase->purchase_date,
-            'supplier_id'=>$purchase->supplier_name,
-            'product_id'=>$purchase->product_name,
-            'buy_price'=>$purchase->buy_price,
-            'qty'=>$purchase->qty,
-            // 'category_id'=>$purchase->category,
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
+        }
+
+        // if cart not empty then check if this product exist then increment quantity
+        if(isset($cart[$product->id])) {
+
+            $cart[$product->id]['buy_price']=$request->buy_price;
+            $cart[$product->id]['qty']= $cart[$product->id]['qty']+$request->qty;
+
+            session()->put('cart', $cart);
+
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
+
+        }
+
+        // if item not exist in cart then add to cart with quantity = 1
+        $cart[$product->id] = [
+                        "product_name" => $product->product_name,
+                        "buy_price" => $request->buy_price,
+                        "qty" => $request->qty
+        ];
+
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
 
 
 
-        ]);
-        return redirect()->back();
-}
-
-public function purchases_manage (Request $purchasemanage)
-    {
-
-    //dd($purchase->all());
-
-
-
-Purchase::create([
-            'purchase_date'=>$purchasemanage->purchase_date,
-            'supplier_id'=>$purchasemanage->supplier_name,
-            'product_id'=>$purchasemanage->product_name,
-            'buy_price'=>$purchasemanage->buy_price,
-            'qty'=>$purchasemanage->qty,
-            // 'category_id'=>$purchase->category,
-
-
-
-        ]);
-        return redirect()->back();
-}
 }

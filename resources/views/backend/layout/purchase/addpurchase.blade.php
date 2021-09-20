@@ -27,49 +27,10 @@
                         <h3 class="box-title">Add Purchase</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form role="form" action="{{ route('Purchase_add') }}" method="post">
+                    <form role="form" action="{{ route('addToCart',) }}" method="post">
                         {{-- enctype="multipart/form-data"> --}}
                         @csrf
                         <div class="box-body">
-
-
-
-                            <div class="form-group">
-                                <label for="">Purchase Date</label>
-                                <input type="text" class="form-control  date" data-provide="datepicker"
-                                    name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
-                                    value="2021-08-22">
-                            </div>
-
-
-
-
-
-                            <div class="form-group">
-                                <label for="price">Challan No</label>
-                                <input type="text" class="form-control" id="Challan_no" name="Challan_no"
-                                    placeholder="Enter Challan No" autocomplete="off" />
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="supplier_name">Supplier</label>
-                                <select type="text" class="form-control select_group"
-
-
-                                id="supplier_name" name="supplier_name"
-                                    placeholder="supplier" autocomplete="off">
-                                    <option>Select Supplier</option>
-                                    @foreach ($supplier as $add)
-
-                                    <option value="{{$add->id}}">{{$add->supplier_name}}</option>
-
-                                @endforeach
-                            </select>
-
-                            </div>
-
-
 
 
 
@@ -103,16 +64,6 @@
                             </div>
 
 
-
-                            <div class="form-group">
-                                <label for="qty">Received By</label>
-                                <input type="text" class="form-control" id="received" name="received" placeholder="received"
-                                    autocomplete="off" />
-                            </div>
-
-
-
-
                         </div>
                         <!-- /.box-body -->
 
@@ -120,7 +71,11 @@
                             <button type="submit" class="btn btn-primary">Save</button>
 
                         </div>
+
                     </form>
+                    @php
+                        $cart = session()->get('cart');
+                    @endphp
 
                     <form role="form" action="{{ route('Purchase_manage') }}" method="post">
                         @csrf
@@ -138,24 +93,20 @@
                             </tr>
                           </thead>
                           <tbody>
+                            @foreach($cart as $products)
 
-                            @foreach($pur as $purc)
                             <tr>
-                                <td>{!!$purc->id!!}</td>
-                                <td>{{$purc->Product->product_name}}</td>
-                                <td>{{$purc->buy_price}}</td>
-                                <td>{{$purc->qty}}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{$products['product_name']}}</td>
+                                <td>{{$products['buy_price']}}</td>
+                                <td>{{$products['qty']}}</td>
                                 <td>100</td>
-                                {{-- <td>{{$purc->category->category_name}}</td> --}}
 
+                                {{-- <td class="">
+                                  <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('product_delete',$product->id)}}"><i class="material-icons">cancel</i></a>
+                                  <a href="{{route('product_edit',$product->id)}}"><i class="material-icons">edit</i></a>
 
-
-
-                                <td class="">
-                                  <a href="#"><i class="fa fa-trash"></i></a>
-
-
-                                </td>
+                                </td> --}}
 
 
 
@@ -164,17 +115,70 @@
                             @endforeach()
 
 
+
+
                       </tbody>
 
                         </table>
+
+
+
+
+
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <form role="form" action="{{ route('Purchase_add') }}" method="post">
+                        {{-- enctype="multipart/form-data"> --}}
+                        @csrf
+                        <div class="box-body">
+
+
+
+                            <div class="form-group">
+                                <label for="">Purchase Date</label>
+                                <input type="text" class="form-control  date" data-provide="datepicker"
+                                    name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
+                                    >
+                            </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="price">Challan No</label>
+                                <input type="text" class="form-control" id="Challan_no" name="Challan_no"
+                                    placeholder="Enter Challan No" autocomplete="off" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="supplier_name">Supplier</label>
+                                <select type="text" class="form-control select_group"
+
+
+                                id="supplier_name" name="supplier_name"
+                                    placeholder="supplier" autocomplete="off">
+                                    <option>Select Supplier</option>
+                                    @foreach ($supplier as $add)
+
+                                    <option value="{{$add->id}}">{{$add->supplier_name}}</option>
+
+                                @endforeach
+                            </select>
+
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             {{-- <a href="{{route('Purchase_manage')}}" type="button" class="btn btn-info" >Submit</a> --}}
                         </div>
-
-
-
-
                     </form>
 
                       </div>

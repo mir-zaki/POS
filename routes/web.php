@@ -110,8 +110,9 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         Route::get('/purchaseadd',[PurchaseCon::class,'purchase_add'])->name('Purchaseadd');
         Route::post('/purchase/cart/',[PurchaseCon::class,'addToCart'])->name('addToCart');
         Route::get('/purchase/session/delete',[PurchaseCon::class,'purchase_forget'])->name('Purchaseforget');
+        Route::get('/purchase/parchases',[PurchaseCon::class,'purchase_parchases'])->name('Purchaseparchases');
         Route::get('/purchase/details',[PurchaseCon::class,'purchase_details'])->name('Purchasedetails');
-        Route::post('/purchase/add',[PurchaseCon::class,'purchases'])->name('Purchase_add');
+        Route::post('/purchase/post',[PurchaseCon::class,'purchasepost'])->name('Purchase_post');
         Route::post('/purchase/manage',[PurchaseCon::class,'purchases_manage'])->name('Purchase_manage');
         // purchase
 

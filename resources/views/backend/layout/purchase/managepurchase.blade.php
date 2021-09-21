@@ -37,13 +37,11 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Challan No</th>
+                  <th>Purchase Id</th>
                   <th>Date</th>
+                  <th>Challan No</th>
                   <th>Supplier</th>
-                  <th>Item</th>
-                  <th>Payable</th>
-                  <th>Paid</th>
-                  <th>Due</th>
+                  <th>Total Price</th>
                   <th>Received By</th>
                   {{-- <th>category</th> --}}
                   <th>Action</th>
@@ -51,19 +49,22 @@
                 </thead>
                 <tbody>
 
-                    @foreach($purchasemanage as $purc)
+                    @foreach($request as $purc)
                     <tr>
-                        <td>{!!$purc->purchase_date!!}</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{$purc->id}}</td>
+                        <td>{{$purc->purchase_date}}</td>
+                        <td>{{$purc->Product->Challan_no}}</td>
                         <td>{{$purc->Supplier->supplier_name}}</td>
-                        <td>{{$purc->Product->product_name}}</td>
-                        <td>{{$purc->buy_price}}</td>
-                        <td>{{$purc->qty}}</td>
-                        {{-- <td>{{$purc->category->category_name}}</td> --}}
+                        <td>{{$purc->total_price}}</td>
+                        <td>{{$purc->received_by}}</td>
+
 
 
 
 
                         <td class="">
+                            <a href=""><i class="material-icons">view_list</i></a>
                           <a href="#"><i class="material-icons">cancel</i></a>
                           <a href="#"><i class="material-icons">edit</i></a>
 

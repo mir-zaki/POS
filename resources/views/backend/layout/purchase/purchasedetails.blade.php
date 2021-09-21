@@ -6,8 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Manage
-        Purchase</small>
+        Purchase Details</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -29,7 +28,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Manage Products</h3>
+              <h3 class="box-title">Purchase Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -47,30 +46,38 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @php
+                       $carts=session()->get('cart');
+                    @endphp
+                    @if($carts)
 
-                    {{-- @foreach($purchasemanage as $purc)
+                    @foreach($carts as $cart)
                     <tr>
-                        <td>{!!$purc->purchase_date!!}</td>
-                        <td>{{$purc->Supplier->supplier_name}}</td>
-                        <td>{{$purc->Product->product_name}}</td>
-                        <td>{{$purc->buy_price}}</td>
-                        <td>{{$purc->qty}}</td>
+
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{$cart['purchase_id']}}</td>
+                        <td>{{$cart['product_name']}}</td>
+                        <td>{{$cart['buy_price']}}</td>
+                        <td>{{$cart['qty']}}</td>
+                        <td>{{$cart['buy_price'] * $cart['qty'],}}</td>
+
                         {{-- <td>{{$purc->category->category_name}}</td> --}}
 
 
 
 
-                        {{-- <td class="">
+                        <td class="">
                           <a href="#"><i class="material-icons">cancel</i></a>
                           <a href="#"><i class="material-icons">edit</i></a>
 
-                        </td> --}}
+                        </td>
 
 
 
 
-                    {{-- </tr> --}}
-                    {{-- @endforeach() --}} 
+                    </tr>
+                    @endforeach()
+                    @endif
             </tbody>
 
               </table>

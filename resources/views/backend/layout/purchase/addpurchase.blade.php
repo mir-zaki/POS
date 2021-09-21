@@ -76,9 +76,7 @@
                     @php
                         $cart = session()->get('cart');
                     @endphp
-                    {{-- @php
-                        $subtotal={{$products['buy_price']}}*{{$products['qty']}};
-                    @endphp --}}
+
 
 
                     <form role="form" action="{{ route('Purchase_manage') }}" method="post">
@@ -87,6 +85,7 @@
                         <table id="manageTable" class="table table-bordered table-striped">
                           <thead>
                           <tr>
+
                             <th style="width:80px">SL</th>
                             <th>Product Name</th>
                             <th>Buy Price</th>
@@ -101,13 +100,16 @@
 
                             @if($cart)
                             @foreach($cart as $products)
+                            @php
+                                $subtotal=$products['buy_price']*$products['qty'];
+                            @endphp
 
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{$products['product_name']}}</td>
                                 <td>{{$products['buy_price']}}</td>
                                 <td>{{$products['qty']}}</td>
-                                <td>100</td>
+                                <td>{{$subtotal}}</td>
                                 <td><a href="{{route('Purchaseforget')}}"><i class="fa fa-trash"></i></a></td>
 
                                 {{-- <td class="">
@@ -141,7 +143,7 @@
                     <br>
                     <br>
                     <br>
-                    <form role="form" action="{{ route('Purchase_add') }}" method="post">
+                    <form role="form" action="{{ route('Purchase_post') }}" method="post">
                         {{-- enctype="multipart/form-data"> --}}
                         @csrf
                         <div class="box-body">

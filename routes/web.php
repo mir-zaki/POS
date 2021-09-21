@@ -109,6 +109,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         Route::get('/purchase',[PurchaseCon::class,'purchaseadd'])->name('Purchase');
         Route::get('/purchaseadd',[PurchaseCon::class,'purchase_add'])->name('Purchaseadd');
         Route::post('/purchase/cart/',[PurchaseCon::class,'addToCart'])->name('addToCart');
+        Route::get('/purchaselist/{id}',[PurchaseCon::class,'purchase_list'])->name('Purchaselist');
         Route::get('/purchase/session/delete',[PurchaseCon::class,'purchase_forget'])->name('Purchaseforget');
         Route::get('/purchase/parchases',[PurchaseCon::class,'purchase_parchases'])->name('Purchaseparchases');
         Route::get('/purchase/details',[PurchaseCon::class,'purchase_details'])->name('Purchasedetails');

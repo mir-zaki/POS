@@ -27,18 +27,34 @@ class PurchaseCon extends Controller
     public function purchase_add ()
     {
         $purchasemanage=Purchase::all();
-        // dd($pur->all());
+
+        //dd($purchasemanage->all());
 
         return view('backend.layout.purchase.managepurchase',compact('purchasemanage'));
 
     }
 
+    public function purchase_list ($id)
+    {
+
+        $purchase = PurchaseDetails::find($id);
+
+        $purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
+
+        dd( $purchaseList);
+
+
+
+    }
+
+
     public function purchase_details ()
     {
 
 
-
-        return view('backend.layout.purchase.purchasedetails');
+        $purchasedetails=PurchaseDetails::all();
+        //dd($purchasedetails->all());
+        return view('backend.layout.purchase.purchasedetails',compact('purchasedetails'));
 
     }
 

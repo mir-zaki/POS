@@ -49,22 +49,22 @@
                 </thead>
                 <tbody>
 
-                    @foreach($request as $purc)
+                    @foreach($purchasemanage as $purc)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{$purc->id}}</td>
                         <td>{{$purc->purchase_date}}</td>
-                        <td>{{$purc->Product->Challan_no}}</td>
-                        <td>{{$purc->Supplier->supplier_name}}</td>
+                        <td>{{$purc->challan_no}}</td>
+                        <td>{{$purc->supplier->supplier_name}}</td>
                         <td>{{$purc->total_price}}</td>
-                        <td>{{$purc->received_by}}</td>
+                        <td>{{$purc->User->username}}</td>
 
 
 
 
 
                         <td class="">
-                            <a href=""><i class="material-icons">view_list</i></a>
+                            <a href="{{route('Purchaselist', $purc->id)}}"><i class="material-icons">view_list</i></a>
                           <a href="#"><i class="material-icons">cancel</i></a>
                           <a href="#"><i class="material-icons">edit</i></a>
 

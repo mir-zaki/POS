@@ -46,20 +46,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @php
-                       $carts=session()->get('cart');
-                    @endphp
-                    @if($carts)
 
-                    @foreach($carts as $cart)
+
+
+                    @foreach($purchasedetails as $cart)
                     <tr>
 
                         <td>{{ $loop->iteration }}</td>
                         <td>{{$cart['purchase_id']}}</td>
-                        <td>{{$cart['product_name']}}</td>
-                        <td>{{$cart['buy_price']}}</td>
+                        <td>{{$cart->product->product_name}}</td>
                         <td>{{$cart['qty']}}</td>
-                        <td>{{$cart['buy_price'] * $cart['qty'],}}</td>
+                        <td>{{$cart['unit_price']}}</td>
+                        <td>{{$cart['unit_price']*$cart['qty']}}</td>
 
                         {{-- <td>{{$purc->category->category_name}}</td> --}}
 
@@ -77,7 +75,7 @@
 
                     </tr>
                     @endforeach()
-                    @endif
+
             </tbody>
 
               </table>

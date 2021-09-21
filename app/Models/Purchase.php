@@ -12,15 +12,25 @@ class Purchase extends Model
     use HasFactory;
     protected $table='purchase';
     protected $guarded=[];
+
     public function Supplier(){
 
-        return $this->belongsto(Supplier::class);
+        return $this->belongsto(Supplier::class,'supplier_id','id');
 
         }
+        public function User()
+        {
 
-        public function Product(){
-
-            return $this->belongsto(Product::class);
+            return $this->belongsto(User::class,'received_by','id');
 
             }
+
+            public function purchase()
+            {
+
+                return $this->belongsto(Purchase::class,'purchase_id','id');
+
+                }
+
+
 }

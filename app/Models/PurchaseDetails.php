@@ -10,4 +10,10 @@ class PurchaseDetails extends Model
     use HasFactory;
     protected $table='purchasedetails';
     protected $guarded=[];
+
+
+    public function product()
+    {
+        return $this->belongsTo(product::class,'product_id','id');
+    }
 }

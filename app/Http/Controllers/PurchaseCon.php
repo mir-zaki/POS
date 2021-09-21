@@ -38,10 +38,13 @@ class PurchaseCon extends Controller
     {
 
         $purchase = PurchaseDetails::find($id);
+        //dd( $purchase);
 
-        $purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
+        //$purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
+        $purchaseList=PurchaseDetails::where('purchase_id',$id)->get();
 
-        dd( $purchaseList);
+
+        return view('backend.layout.purchase.purchaselist',compact('purchaseList'));
 
 
 

@@ -35,6 +35,8 @@ return array(
     'App\\Models\\Customer' => $baseDir . '/app/Models/Customer.php',
     'App\\Models\\Pos' => $baseDir . '/app/Models/Pos.php',
     'App\\Models\\Purchase' => $baseDir . '/app/Models/Purchase.php',
+    'App\\Models\\PurchaseDetails' => $baseDir . '/app/Models/PurchaseDetails.php',
+    'App\\Models\\Stock' => $baseDir . '/app/Models/Stock.php',
     'App\\Models\\Supplier' => $baseDir . '/app/Models/Supplier.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\category' => $baseDir . '/app/Models/category.php',

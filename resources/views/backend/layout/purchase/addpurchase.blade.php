@@ -152,7 +152,7 @@
 
                             <div class="form-group">
                                 <label for="">Purchase Date</label>
-                                <input type="text" class="form-control  date" data-provide="datepicker"
+                                <input  class="form-control  date" data-provide="datepicker"
                                     name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
                                     value="">
                             </div>

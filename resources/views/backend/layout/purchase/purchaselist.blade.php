@@ -6,12 +6,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Manage
-        Purchase</small>
+        Purchase Details</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Category Details</li>
+        <li class="active">Purchase</li>
       </ol>
     </section>
 
@@ -24,50 +23,47 @@
           <div id="messages"></div>
 
 
-
+                    <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
             <br /> <br />
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Category Details</h3>
+              <h3 class="box-title">Purchase Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="manageTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>SL</th>
-                  <th>Product Name</th>
 
-
+                  <th>No</th>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th>Unit Price</th>
+                  <th>Sub Total</th>
                   </tr>
                 </thead>
                 <tbody>
-                    {{-- @dd($product) --}}
 
-                    @foreach($product as $key=>$pro)
+
+
+                    @foreach($purchaseList as $key=>$list)
                     <tr>
-                        {{-- <td>{{$pro->id}}</td> --}}
-                        <td>{{ $loop->iteration}}</td>
-                        <td>{{$pro->product_name}}</td>
-                        {{-- <td>{{$purc->buy_price}}</td> --}}
+
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{$list->product->product_name}}</td>
+                        <td>{{$list->qty}}</td>
+                        <td>{{$list->unit_price}}</td>
+                        <td>{{$list->sub_total}}</td>
 
 
-
-
-
-{{--
-                        <td class="">
-                          <a href="#"><i class="material-icons">cancel</i></a>
-                          <a href="#"><i class="material-icons">edit</i></a>
-
-                        </td> --}}
 
 
 
 
                     </tr>
                     @endforeach()
+
             </tbody>
 
               </table>
@@ -106,8 +102,3 @@
 
 
 @endsection
-
-
-
-
-

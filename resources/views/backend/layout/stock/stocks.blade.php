@@ -35,15 +35,35 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Product</th>
+                                    <th>Item</th>
                                     <th>Category</th>
-                                    <th>Buy Price</th>
                                     <th>Sell Price</th>
-                                    <th>Purchases</th>
+                                    <th>Buy Price</th>
                                     <th>Available Stock</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($stock as $stoc)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{$stoc->product_name}}</td>
+                        <td>{{$stoc->category_id}}</td>
+                        <td>{{$stoc->sell_price}}</td>
+                        <td>{{$stoc->buy_price}}</td>
+                        <td>12</td>
+
+
+
+
+
+
+
+
+
+
+
+                    </tr>
+                    @endforeach()
 
 
                             </tbody>

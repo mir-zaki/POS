@@ -26,19 +26,7 @@ class ProductCon extends Controller
 
     public function products (Request  $addproduct)
     {
-        // $fileName='';
-        //     if($request->hasFile('product_image'))
-        //     {
-        //         $file=$request->file('product_image');
-        //        //generate file name here
-        //         $fileName=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-        //         $file->storeAs('/uploads',$fileName);
-        //     }
-
-    //   dd($addproduct->all());
-
-
-
+        
 product::create([
             'product_image'=>$addproduct->product_image,
             'product_name'=>$addproduct->product_name,

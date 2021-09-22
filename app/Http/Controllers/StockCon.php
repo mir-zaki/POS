@@ -13,7 +13,7 @@ class StockCon extends Controller
     public function stock ()
     {
 
-        $stock=product::all();
+        $stock=Stock::all();
 
         //dd($stock->all());
 

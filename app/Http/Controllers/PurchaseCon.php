@@ -7,6 +7,7 @@ use App\Models\category;
 use App\Models\product;
 use App\Models\Purchase;
 use App\Models\Supplier;
+use App\Models\Stock;
 use App\Models\PurchaseDetails;
 use Illuminate\Http\Request;
 use Throwable;
@@ -61,6 +62,7 @@ class PurchaseCon extends Controller
 
     }
 
+
     public function purchasepost (Request $request)
     {
     // dd($request->all());
@@ -88,6 +90,40 @@ class PurchaseCon extends Controller
                 'unit_price' => $cart['buy_price'],
                 'sub_total' => $cart['buy_price'] * $cart['qty'],
             ]);
+
+
+
+
+            //step 1 check product has in stock
+$stock=Stock::where('product_id',$cart['product_id'])->first();
+
+//dd($stock);
+
+if($stock)
+{
+    $stock->update([
+        'qty' =>$stock->qty + $cart['qty']
+    ]);
+
+}
+else
+{
+
+    Stock::create([
+
+        'product_id'=>$cart['product_id'],
+        'qty'=> $cart['qty'],
+
+    ]);
+}
+
+
+
+            //step 2 if has
+                //update quantity
+
+                //else create stock
+
 
             }
             $request->session()->forget('cart');

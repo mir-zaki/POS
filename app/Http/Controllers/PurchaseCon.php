@@ -142,6 +142,7 @@ else
 
 public function addToCart(Request $request)
     {
+        
 
 
         $product = product::find($request->product_name);

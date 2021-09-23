@@ -115,7 +115,6 @@
                                 {{-- <td style="width:100px">
                                     <div class="plusminus horiz">
                                         <input type="number" data-check="{{$products['qty']}}"  class="qty" name="qty[]" />
-
                                     </div>
                                 </td> --}}
 
@@ -125,7 +124,6 @@
                                 {{-- <td class="">
                                   <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('product_delete',$product->id)}}"><i class="material-icons">cancel</i></a>
                                   <a href="{{route('product_edit',$product->id)}}"><i class="material-icons">edit</i></a>
-
                                 </td> --}}
 
 
@@ -138,12 +136,16 @@
 
 
                       </tbody>
-                      <tr>
-                          <th>Total: {{$total}}TK</th>
-                      </tr>
+
 
                         </table>
+                        <br>
+                        <br>
 
+                        <tr>
+
+                            <th>Total: {{$total}} TK</th>
+                        </tr>
 
 
 
@@ -224,10 +226,8 @@
     $(document).ready(function () {
         $(".select_group").select2();
         $("#description").wysihtml5();
-
         $("#mainProductNav").addClass('active');
         $("#addProductNav").addClass('active');
-
         var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
             'onclick="alert(\'Call your custom code here.\')">' +
             '<i class="glyphicon glyphicon-tag"></i>' +
@@ -250,9 +250,7 @@
             },
             allowedFileExtensions: ["jpg", "png", "gif"]
         });
-
     });
-
 </script>
 <script>
     $(document).ready(function(){

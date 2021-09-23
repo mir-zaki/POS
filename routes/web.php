@@ -55,8 +55,9 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
 
         //user pos
         Route::get('/pos',[PosCon::class,'pos'])->name('pos');
-        // Route::get('/pos/manage',[UserCon::class,'usermanage'])->name('usermanage');
-        // Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
+        Route::post('/pos/cart',[PosCon::class,'poscart'])->name('poscart');
+        Route::get('/cart/forget',[PosCon::class,'pos_forget'])->name('pos_forget');
+
         //user pos
 
         //customer start
@@ -79,6 +80,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
 
         //dashboard
         Route::get('/dashboard',[DashboardCon::class,'dashboard'])->name('dash');
+
         //dashboard
 
 

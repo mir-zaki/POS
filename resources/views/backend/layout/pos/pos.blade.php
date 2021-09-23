@@ -27,42 +27,11 @@
                         <h3 class="box-title">POS</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form role="form" action="#" method="post">
+                    <form role="form" action="{{route('poscart')}}" method="post">
                         {{-- enctype="multipart/form-data"> --}}
                         @csrf
+
                         <div class="box-body">
-
-
-
-
-                            <div class="form-group">
-                                <label for="date" class="form-label">Date</label>
-                                <input required type="date" class="form-control" id="purchase_date" name="sell_date">
-                              </div>
-
-
-
-
-
-
-                            <div class="form-group">
-                                <label for="supplier_name">Customer</label>
-                                <select type="text" class="form-control select_group"
-
-
-                                id="supplier_name" name="supplier_name"
-                                    placeholder="supplier" autocomplete="off">
-                                    <option>Walk in Customer</option>
-                                    @foreach ($customer as $add)
-
-                                    <option value="{{$add->id}}">{{$add->name}}</option>
-
-                                @endforeach
-                            </select>
-
-                            </div>
-
-
 
 
                              <div class="form-group">
@@ -83,43 +52,13 @@
 
 
                             <div class="form-group">
-                                <label for="price">Price</label>
-                                <input type="text" class="form-control" id="price" name="buy_price"
-                                    placeholder="Enter price" autocomplete="off" />
-                            </div>
-
-
-
-                            <div class="form-group">
-
-                                <label for="price">Discount</label>
-                                <input type="text" class="form-control" id="discount" name="discount"
-                                    placeholder="%" autocomplete="off" />
-                            </div>
-
-
-
-                            <div class="form-group">
                                 <label for="qty">Qty</label>
                                 <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty"
                                     autocomplete="off" />
                             </div>
 
 
-                            {{-- <div class="form-group">
-                                <label for="category">Category</label>
-                                <select class="form-control select_group" id="category" name="category"
-                                    multiple="multiple">
 
-                                @foreach ($categories as $add)
-
-                                    <option value="{{$add->id}}">{{$add->category_name}}</option>
-
-                                @endforeach
-
-
-                                </select>
-                            </div> --}}
 
 
 
@@ -132,6 +71,11 @@
 
                         </div>
                     </form>
+                    @php
+                            $cart = session()->get('cart');
+                            $total=0;
+                    @endphp
+
 
                     <form role="form" action="{{ route('Purchase_manage') }}" method="post">
                         @csrf
@@ -140,44 +84,98 @@
                           <thead>
                           <tr>
                             <th style="width:80px">SL</th>
-                            <th>Product Name</th>
-                            <th>Buy Price</th>
+                            <th>Item</th>
+                            <th>Price</th>
                             <th>Qty</th>
                             <th>Sub Total</th>
-                            <th style="width:50px">
-                                <i class="fa fa-trash"></i>
+                            <th><a href="{{route('pos_forget')}}"><i class="fa fa-trash"></i></a></th>
+
                             </tr>
                           </thead>
                           <tbody>
 
-                            {{-- @foreach($pur as $purc)
+                            @if($cart)
+                            @foreach($cart as $carts)
+                            @php
+                                $subtotal=$carts['sell_price']*$carts['qty'];
+
+                                $total=$subtotal+ $total
+                            @endphp
+
                             <tr>
-                                <td>{!!$purc->id!!}</td>
-                                <td>{{$purc->Product->product_name}}</td>
-                                <td>{{$purc->buy_price}}</td>
-                                <td>{{$purc->qty}}</td>
-                                <td>100</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{$carts['product_name']}}</td>
+                                <td>{{$carts['sell_price']}}</td>
+                                <td>{{$carts['qty']}}</td>
 
 
 
+                                <td>{{$subtotal}}</td>
+                                <td><a href="{{route('pos_forget')}}"><i class="fa fa-trash"></i></a></td>
 
 
-                                <td class="">
-                                  <a href="#"><i class="fa fa-trash"></i></a>
-
-
-                                </td>
 
 
 
 
                             </tr>
-                            @endforeach() --}}
+                            @endforeach()
+                            @endif
 
 
                       </tbody>
 
+
                         </table>
+                        <br>
+                        <tr>
+                            <th>Total:  {{$total}} TK</th>
+                        </tr>
+
+
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <form action="">
+
+                        <div class="form-group">
+                            <label for="date" class="form-label">Date</label>
+                            <input required type="date" class="form-control" id="purchase_date" name="sell_date">
+                          </div>
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label for="customer_name">Customer</label>
+                            <select type="text" class="form-control select_group"
+
+
+                            id="customer_name" name="customer_name"
+                                placeholder="Customer" autocomplete="off">
+                                <option>Walk in Customer</option>
+                                @foreach ($customer as $add)
+
+                                <option value="{{$add->id}}">{{$add->name}}</option>
+
+                            @endforeach
+                        </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="price">Discount</label>
+                            <input type="text" class="form-control" id="discount" name="discount"
+                                placeholder="%" autocomplete="off" />
+                        </div>
+
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             {{-- <a href="{{route('Purchase_manage')}}" type="button" class="btn btn-info" >Submit</a> --}}

@@ -27,19 +27,18 @@
                         <h3 class="box-title">POS</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form role="form" action="{{ route('Purchase_add') }}" method="post">
+                    <form role="form" action="#" method="post">
                         {{-- enctype="multipart/form-data"> --}}
                         @csrf
                         <div class="box-body">
 
 
 
+
                             <div class="form-group">
-                                <label for="">Date</label>
-                                <input type="text" class="form-control  date" data-provide="datepicker"
-                                    name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
-                                    value="2021-08-22">
-                            </div>
+                                <label for="date" class="form-label">Date</label>
+                                <input required type="date" class="form-control" id="purchase_date" name="sell_date">
+                              </div>
 
 
 

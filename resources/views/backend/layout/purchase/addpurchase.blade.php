@@ -75,6 +75,7 @@
                     </form>
                     @php
                         $cart = session()->get('cart');
+                        $total=0;
                     @endphp
 
 
@@ -102,6 +103,7 @@
                             @foreach($cart as $products)
                             @php
                                 $subtotal=$products['buy_price']*$products['qty'];
+                                $total=$subtotal+$total
                             @endphp
 
                             <tr>
@@ -109,6 +111,14 @@
                                 <td>{{$products['product_name']}}</td>
                                 <td>{{$products['buy_price']}}</td>
                                 <td>{{$products['qty']}}</td>
+
+                                {{-- <td style="width:100px">
+                                    <div class="plusminus horiz">
+                                        <input type="number" data-check="{{$products['qty']}}"  class="qty" name="qty[]" />
+
+                                    </div>
+                                </td> --}}
+
                                 <td>{{$subtotal}}</td>
                                 <td><a href="{{route('Purchaseforget')}}"><i class="fa fa-trash"></i></a></td>
 
@@ -129,7 +139,7 @@
 
                       </tbody>
                       <tr>
-                          <th>Total</th>
+                          <th>Total: {{$total}}TK</th>
                       </tr>
 
                         </table>
@@ -150,12 +160,11 @@
 
 
 
+
                             <div class="form-group">
-                                <label for="">Purchase Date</label>
-                                <input  class="form-control  date" data-provide="datepicker"
-                                    name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
-                                    value="">
-                            </div>
+                                <label for="date" class="form-label">Purchase Date</label>
+                                <input required type="date" class="form-control" id="purchase_date" name="purchase_date">
+                              </div>
 
 
 

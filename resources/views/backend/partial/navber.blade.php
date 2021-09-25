@@ -23,6 +23,12 @@
                 </a>
             </li>
 
+            <li id="brandNav">
+                <a href="{{route('manage_sale')}}">
+                    <i class="fa fa-shopping-cart"></i><span>Manage Sale </span>
+                </a>
+            </li>
+
 
         <li class="treeview" id="mainNav">
             <a href="#">

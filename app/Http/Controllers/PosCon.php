@@ -23,12 +23,33 @@ class PosCon extends Controller
 
     }
 
-    public function sale(){
+    public function manage_sale(){
 
-        return view('backend.layout.pos.sale');
+        $salemanage=Sale::all();
+
+        return view('backend.layout.pos.managesale',compact('salemanage'));
 
 
     }
+
+
+    public function sale_list ($id)
+    {
+
+
+        //dd( $purchase);
+
+        //$purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
+        $salelist=Saledetails::where('sale_id',$id)->get();
+
+
+        return view('backend.layout.pos.salelist',compact('salelist'));
+
+
+
+    }
+
+
 
     public function pos_post( Request $request){
 

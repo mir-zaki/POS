@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                   <label for="username">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Type Customer Name" autocomplete="off">
+                  <input type="text" class="form-control" id="name" name="customer_name" placeholder="Type Customer Name" autocomplete="off">
                 </div>
 
                 <div class="form-group">

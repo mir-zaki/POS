@@ -48,14 +48,14 @@
 
 
 
-                    @foreach($purchaseList as $key=>$list)
+                    @foreach($salelist as $key=>$list)
 
                     <tr>
 
                         <td>{{ $loop->iteration }}</td>
                         <td>{{$list->product->product_name}}</td>
                         <td>{{$list->qty}}</td>
-                        <td>{{$list->unit_price}}</td>
+                        <td>{{$list->sale_price}}</td>
                         <td>{{$list->sub_total}}</td>
 
 

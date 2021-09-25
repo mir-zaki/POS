@@ -35,7 +35,7 @@ class CustomerCon extends Controller
 
 
 Customer::create([
-            'name'=>$addcustomer->name,
+            'customer_name'=>$addcustomer->customer_name,
             'email'=>$addcustomer->email,
             'address'=>$addcustomer->address,
             'phone'=>$addcustomer->phone,
@@ -78,7 +78,7 @@ public function customerdelete ($id)
         $customers=Customer::find($id);
 
         $customers->update([
-            'name'=>$request->name,
+            'customer_name'=>$request->customer_name,
             'email'=>$request->email,
             'address'=>$request->address,
             'phone'=>$request->phone,

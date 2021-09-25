@@ -37,35 +37,32 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Purchase Id</th>
+                  <th>Invoice No</th>
                   <th>Date</th>
-                  <th>Challan No</th>
-                  <th>Supplier</th>
+                  <th>Customer</th>
                   <th>Total Price</th>
-                  <th>Received By</th>
-                  {{-- <th>category</th> --}}
+                  <th>Sale By</th>
                   <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
 
-                    @foreach($purchasemanage as $purc)
+                    @foreach($salemanage as $sa)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{$purc->id}}</td>
-                        <td>{{$purc->purchase_date}}</td>
-                        <td>{{$purc->challan_no}}</td>
-                        <td>{{$purc->supplier->supplier_name}}</td>
-                        <td>{{$purc->total_price}}</td>
-                        <td>{{$purc->User->username}}</td>
+                        <td>inv{{$sa->id}}m</td>
+                        <td>{{$sa->sale_date}}</td>
+                        <td>{{$sa->Customer->customer_name}}</td>
+                        <td>{{$sa->total_price}}</td>
+                        <td>{{$sa->User->username}}</td>
 
 
 
 
 
                         <td class="">
-                            <a href="{{route('Purchaselist', $purc->id)}}"><i class="material-icons">view_list</i></a>
-                          <a href="{{route('purchases_delete',$purc->id)}}"><i class="material-icons">cancel</i></a>
+                            <a href="{{route('sale_list',$sa->id)}}"><i class="material-icons">view_list</i></a>
+                          <a href="#"><i class="material-icons">cancel</i></a>
                           <a href="#"><i class="material-icons">edit</i></a>
 
                         </td>

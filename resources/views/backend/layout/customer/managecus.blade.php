@@ -61,10 +61,10 @@
                                 @foreach($customer as $customers )
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>{{ $customers->name }}</td>
-                                        <td>{{ $customers->email }}</td>
-                                        <td>{{ $customers->address }}</td>
-                                        <td>{{ $customers->phone }}</td>
+                                        <td>{{ $customers->customer_name}}</td>
+                                        <td>{{ $customers->email}}</td>
+                                        <td>{{ $customers->address}}</td>
+                                        <td>{{ $customers->phone}}</td>
                                         <td class="">
                                             {{-- <a href=""><i class="material-icons">details</i></a> --}}
                                             <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('customer_delete',$customers->id)}}}"><i class="material-icons">cancel</i></a>

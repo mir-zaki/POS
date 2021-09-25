@@ -53,15 +53,16 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
         //user end
 
-        //user pos
+        //pos
         Route::get('/pos',[PosCon::class,'pos'])->name('pos');
-        Route::get('/pos/sale',[PosCon::class,'sale'])->name('sale');
+        Route::get('/manage/sale',[PosCon::class,'manage_sale'])->name('manage_sale');
+        Route::get('/manage/sale/list/{id}',[PosCon::class,'sale_list'])->name('sale_list');
         Route::get('/pos/sale/details',[PosCon::class,'sale_details'])->name('sale_details');
         Route::post('/pos/cart',[PosCon::class,'poscart'])->name('poscart');
         Route::get('/cart/forget',[PosCon::class,'pos_forget'])->name('pos_forget');
         Route::post('/cart/pos',[PosCon::class,'pos_post'])->name('pos_post');
 
-        //user pos
+        //pos
 
         //customer start
         Route::get('/customer',[CustomerCon::class,'customers'])->name('customer');

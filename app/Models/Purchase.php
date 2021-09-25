@@ -25,7 +25,7 @@ class Purchase extends Model
 
             }
 
-            public function purchase()
+            public function Purchase()
             {
 
                 return $this->belongsto(Purchase::class,'purchase_id','id');

@@ -159,10 +159,10 @@
 
                             id="customer_name" name="customer_name"
                                 placeholder="Customer" autocomplete="off">
-                                <option value="0">Walk in Customer</option>
+                                <option value="01">Walk in Customer</option>
                                 @foreach ($customer as $add)
 
-                                <option value="{{$add->id}}">{{$add->name}}</option>
+                                <option value="{{$add->id}}">{{$add->customer_name}}</option>
 
                             @endforeach
                         </select>

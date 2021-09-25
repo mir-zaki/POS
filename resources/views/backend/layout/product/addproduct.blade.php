@@ -65,7 +65,7 @@
 
                 <div class="form-group">
                     <label for="price">Sell Price</label>
-                    <input type="text" class="form-control" id="price" name="sell_price"
+                    <input type="text" class="form-control" id="sale_price" name="sale_price"
                         placeholder="Enter price" autocomplete="off" />
                 </div>
 

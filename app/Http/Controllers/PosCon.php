@@ -5,17 +5,83 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\product;
+use App\Models\Sale;
+use App\Models\Stock;
+use App\Models\Saledetails;
 use Illuminate\Http\Request;
 
 class PosCon extends Controller
 {
     public function pos(){
+
+
         $customer=Customer::all();
         $product=product::all();
         // dd($customer);
         return view('backend.layout.pos.pos',compact('customer','product'));
 
+
     }
+
+    public function sale(){
+
+        return view('backend.layout.pos.sale');
+
+
+    }
+
+    public function pos_post( Request $request){
+
+
+        $saleid=Sale::create([
+            'sale_date'=>$request->sale_date,
+            'customer_id'=>$request->customer_name,
+            'total_price'=>0,
+            'sale_by'=>auth()->user()->id,
+
+        ]);
+
+        $carts=session()->get('cart');
+
+
+
+            foreach ($carts as $cart){
+
+            Saledetails::create([
+                'sale_id' => $saleid->id,
+                'product_id' => $cart['product_id'],
+                'qty' => $cart['qty'],
+                'sale_price' => $cart['sale_price'],
+                'sub_total' => $cart['sale_price'] * $cart['qty'],
+            ]);
+
+
+            $stock=Stock::where('product_id',$cart['product_id'])->first();
+
+//dd($stock);
+
+if($stock)
+{
+    $stock->update([
+        'qty' =>$stock->qty - $cart['qty']
+    ]);
+
+}
+else
+{
+
+    Stock::create([
+
+        'product_id'=>$cart['product_id'],
+        'qty'=> $cart['qty'],
+
+    ]);
+}
+
+    }
+    $request->session()->forget('cart');
+            return redirect()->back();
+}
 
 
 
@@ -46,7 +112,7 @@ class PosCon extends Controller
                     $product->id  => [
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
-                        "sell_price" => $product->sell_price,
+                        "sale_price" => $product->sale_price,
                         "qty" => $request->qty
                     ]
 
@@ -74,7 +140,7 @@ class PosCon extends Controller
         $cart[$product->id] = [
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
-                        "sell_price" => $product->sell_price,
+                        "sale_price" => $product->sale_price,
                         "qty" => $request->qty
         ];
 

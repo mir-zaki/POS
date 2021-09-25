@@ -111,13 +111,6 @@
                                 <td>{{$products['product_name']}}</td>
                                 <td>{{$products['buy_price']}}</td>
                                 <td>{{$products['qty']}}</td>
-
-                                {{-- <td style="width:100px">
-                                    <div class="plusminus horiz">
-                                        <input type="number" data-check="{{$products['qty']}}"  class="qty" name="qty[]" />
-                                    </div>
-                                </td> --}}
-
                                 <td>{{$subtotal}}</td>
                                 <td><a href="{{route('Purchaseforget')}}"><i class="fa fa-trash"></i></a></td>
 

@@ -55,8 +55,11 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
 
         //user pos
         Route::get('/pos',[PosCon::class,'pos'])->name('pos');
+        Route::get('/pos/sale',[PosCon::class,'sale'])->name('sale');
+        Route::get('/pos/sale/details',[PosCon::class,'sale_details'])->name('sale_details');
         Route::post('/pos/cart',[PosCon::class,'poscart'])->name('poscart');
         Route::get('/cart/forget',[PosCon::class,'pos_forget'])->name('pos_forget');
+        Route::post('/cart/pos',[PosCon::class,'pos_post'])->name('pos_post');
 
         //user pos
 
@@ -117,6 +120,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         Route::get('/purchase/details',[PurchaseCon::class,'purchase_details'])->name('Purchasedetails');
         Route::post('/purchase/post',[PurchaseCon::class,'purchasepost'])->name('Purchase_post');
         Route::post('/purchase/manage',[PurchaseCon::class,'purchases_manage'])->name('Purchase_manage');
+        Route::get('/purchase/delete/{id}',[PurchaseCon::class,'purchases_delete'])->name('purchases_delete');
         // purchase
 
         // stock

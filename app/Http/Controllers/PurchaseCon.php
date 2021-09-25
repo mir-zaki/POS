@@ -142,7 +142,7 @@ else
 
 public function addToCart(Request $request)
     {
-        
+
 
 
         $product = product::find($request->product_name);
@@ -213,6 +213,15 @@ public function addToCart(Request $request)
         }
 
 return redirect()->back();
+
+    }
+
+    public function purchases_delete($id){
+        $purchasedel=Purchase::find($id);
+        if($purchasedel){
+            $purchasedel->delete();
+            return redirect()->back()->with('message','Product is Deleted');
+        }
 
     }
 

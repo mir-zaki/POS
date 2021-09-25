@@ -47,7 +47,9 @@
 
 
 
+
                     @foreach($purchaseList as $key=>$list)
+
                     <tr>
 
                         <td>{{ $loop->iteration }}</td>
@@ -87,6 +89,7 @@
 
 
         </form>
+       
 
 
       </div><!-- /.modal-content -->

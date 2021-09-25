@@ -34,9 +34,9 @@
                         <table id="manageTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>SL</th>
-                                    <th>Item</th>
-                                    <th>Available Stock</th>
+                                    <th style="width:50px">SL</th>
+                                    <th style="width:150px">Item</th>
+                                    <th style="width:150px">Available Stock</th>
                                 </tr>
                             </thead>
                             <tbody>

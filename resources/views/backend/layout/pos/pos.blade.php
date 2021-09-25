@@ -97,7 +97,7 @@
                             @if($cart)
                             @foreach($cart as $carts)
                             @php
-                                $subtotal=$carts['sell_price']*$carts['qty'];
+                                $subtotal=$carts['sale_price']*$carts['qty'];
 
                                 $total=$subtotal+ $total
                             @endphp
@@ -105,7 +105,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{$carts['product_name']}}</td>
-                                <td>{{$carts['sell_price']}}</td>
+                                <td>{{$carts['sale_price']}}</td>
                                 <td>{{$carts['qty']}}</td>
 
 
@@ -139,11 +139,12 @@
                     <br>
 
 
-                    <form action="">
+                    <form action="{{route('pos_post')}}" method="post">
+                        @csrf
 
                         <div class="form-group">
                             <label for="date" class="form-label">Date</label>
-                            <input required type="date" class="form-control" id="purchase_date" name="sell_date">
+                            <input required type="date" class="form-control" id="purchase_date" name="sale_date">
                           </div>
 
 
@@ -158,7 +159,7 @@
 
                             id="customer_name" name="customer_name"
                                 placeholder="Customer" autocomplete="off">
-                                <option>Walk in Customer</option>
+                                <option value="0">Walk in Customer</option>
                                 @foreach ($customer as $add)
 
                                 <option value="{{$add->id}}">{{$add->name}}</option>

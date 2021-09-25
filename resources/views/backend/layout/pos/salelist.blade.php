@@ -6,12 +6,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Manage
-        Purchase</small>
+        Sale Details</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Purchase</li>
+        <li class="active">Sale</li>
       </ol>
     </section>
 
@@ -29,52 +28,44 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Manage Products</h3>
+              <h3 class="box-title">Purchase Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="manageTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+
                   <th>No</th>
-                  <th>Purchase Id</th>
-                  <th>Date</th>
-                  <th>Challan No</th>
-                  <th>Supplier</th>
-                  <th>Total Price</th>
-                  <th>Received By</th>
-                  {{-- <th>category</th> --}}
-                  <th>Action</th>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th>Unit Price</th>
+                  <th>Sub Total</th>
                   </tr>
                 </thead>
                 <tbody>
 
-                    @foreach($purchasemanage as $purc)
+
+
+
+                    @foreach($purchaseList as $key=>$list)
+
                     <tr>
+
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{$purc->id}}</td>
-                        <td>{{$purc->purchase_date}}</td>
-                        <td>{{$purc->challan_no}}</td>
-                        <td>{{$purc->supplier->supplier_name}}</td>
-                        <td>{{$purc->total_price}}</td>
-                        <td>{{$purc->User->username}}</td>
+                        <td>{{$list->product->product_name}}</td>
+                        <td>{{$list->qty}}</td>
+                        <td>{{$list->unit_price}}</td>
+                        <td>{{$list->sub_total}}</td>
 
 
-
-
-
-                        <td class="">
-                            <a href="{{route('Purchaselist', $purc->id)}}"><i class="material-icons">view_list</i></a>
-                          <a href="#"><i class="material-icons">cancel</i></a>
-                          <a href="#"><i class="material-icons">edit</i></a>
-
-                        </td>
 
 
 
 
                     </tr>
                     @endforeach()
+
             </tbody>
 
               </table>
@@ -98,6 +89,7 @@
 
 
         </form>
+
 
 
       </div><!-- /.modal-content -->

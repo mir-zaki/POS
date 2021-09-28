@@ -11,23 +11,21 @@ class Sale extends Model
     protected $table='sales';
     protected $guarded=[];
 
-    public function Customer(){
 
-        return $this->belongsto(Customer::class,'customer_id','id');
-
-        }
 
         public function User()
         {
 
             return $this->belongsto(User::class,'sale_by','id');
+        }
+
+        public function sale()
+        {
+
+            return $this->belongsto(Sale::class,'sale_id','id');
 
             }
-
-            public function sale()
-            {
-
-                return $this->belongsto(Sale::class,'sale_id','id');
-
-                }
+        public function customer(){
+            return $this->belongsto(Customer::class,'customer_id','id');
+        }
 }

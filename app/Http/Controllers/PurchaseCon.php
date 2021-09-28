@@ -38,14 +38,11 @@ class PurchaseCon extends Controller
     public function purchase_list ($id)
     {
 
-        $purchase = PurchaseDetails::find($id);
-        //dd( $purchase);
-
-        //$purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
+        
         $purchaseList=PurchaseDetails::where('purchase_id',$id)->get();
 
 
-        return view('backend.layout.purchase.purchaselist',compact('purchaseList'));
+        return view('backend.layout.purchase.purchaselist',compact('purchaseList','id'));
 
 
 
@@ -64,15 +61,23 @@ class PurchaseCon extends Controller
 
 
     public function purchasepost (Request $request)
+
+
     {
     // dd($request->all());
         DB::beginTransaction();
         try{
+
+            $carts=session()->get('cart');
+            // dd($carts);
+
+            $total=array_sum(array_column($carts,'sub_total'));
+
             $data=Purchase::create([
                 'purchase_date'=>$request->purchase_date,
                 'supplier_id'=>$request->supplier_name,
                 'challan_no'=>$request->Challan_no,
-                'total_price'=>0,
+                'total_price'=>$total,
                 'received_by'=>auth()->user()->id,
 
             ]);
@@ -168,7 +173,8 @@ public function addToCart(Request $request)
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
                         "buy_price" => $request->buy_price,
-                        "qty" => $request->qty
+                        "qty" => $request->qty,
+                        "sub_total"=>$request->buy_price *$request->qty
                     ]
             ];
 
@@ -197,7 +203,8 @@ public function addToCart(Request $request)
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
                         "buy_price" => $request->buy_price,
-                        "qty" => $request->qty
+                        "qty" => $request->qty,
+                        "sub_total"=>$request->buy_price *$request->qty
         ];
 
         session()->put('cart', $cart);

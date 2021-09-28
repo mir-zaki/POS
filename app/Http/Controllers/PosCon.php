@@ -23,10 +23,12 @@ class PosCon extends Controller
 
     }
 
-    public function manage_sale(){
-
-        $salemanage=Sale::all();
-
+    public function manage_sale(Request $request){
+        if($request->from_date){
+            $salemanage=Sale::where('sale_date',$request->from_date)->get();
+        }else{
+            $salemanage=Sale::all();
+        }
         return view('backend.layout.pos.managesale',compact('salemanage'));
 
 
@@ -36,14 +38,13 @@ class PosCon extends Controller
     public function sale_list ($id)
     {
 
-
         //dd( $purchase);
 
         //$purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
         $salelist=Saledetails::where('sale_id',$id)->get();
 
 
-        return view('backend.layout.pos.salelist',compact('salelist'));
+        return view('backend.layout.pos.salelist',compact('salelist','id'));
 
 
 
@@ -53,14 +54,18 @@ class PosCon extends Controller
 
     public function pos_post( Request $request){
 
+        $carts=session()->get('cart');
+
+        $total=array_sum(array_column($carts,'sub_total'));
 
         $saleid=Sale::create([
             'sale_date'=>$request->sale_date,
             'customer_id'=>$request->customer_name,
-            'total_price'=>0,
+            'total_price'=>$total,
             'sale_by'=>auth()->user()->id,
 
         ]);
+
 
         $carts=session()->get('cart');
 
@@ -68,7 +73,7 @@ class PosCon extends Controller
 
             foreach ($carts as $cart){
 
-            Saledetails::create([
+          $details =  Saledetails::create([
                 'sale_id' => $saleid->id,
                 'product_id' => $cart['product_id'],
                 'qty' => $cart['qty'],
@@ -83,13 +88,16 @@ class PosCon extends Controller
 
 if($stock)
 {
-    $stock->update([
-        'qty' =>$stock->qty - $cart['qty']
-    ]);
+    if($stock->qty > $cart['qty']){
+        $stock->update([
+            'qty' =>$stock->qty - $cart['qty']
+        ]);
+    }else{
+        return redirect()->back()->with('message','Quantity is Low');
+    }
 
-}
-else
-{
+
+}else{
 
     Stock::create([
 
@@ -101,7 +109,7 @@ else
 
     }
     $request->session()->forget('cart');
-            return redirect()->back();
+            return redirect()->route('sale_list',$details->id);
 }
 
 
@@ -115,6 +123,8 @@ else
 
 
 
+
+
         if(!$product) {
 
 
@@ -125,6 +135,12 @@ else
 
         $cart = session()->get('cart');
 
+        $stock=Stock::where('product_id',$product->id)->first();
+
+        if($stock->qty < $request->qty){
+
+            return redirect()->back()->with('message',' Requested Product Quantity is Low');
+        }
 
         // if cart is empty then this the first product
         if(!$cart) {
@@ -134,7 +150,8 @@ else
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
                         "sale_price" => $product->sale_price,
-                        "qty" => $request->qty
+                        "qty" => $request->qty,
+                        'sub_total' =>$product->sale_price * $request->qty
                     ]
 
             ];
@@ -146,8 +163,10 @@ else
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
 
-        // if cart not empty then check if this product exist then increment quantity
+
         if(isset($cart[$product->id])) {
+
+
 
             $cart[$product->id]['qty']= $cart[$product->id]['qty']+$request->qty;
 
@@ -157,15 +176,18 @@ else
 
         }
 
-        // if item not exist in cart then add to cart with quantity = 1
+
         $cart[$product->id] = [
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
                         "sale_price" => $product->sale_price,
-                        "qty" => $request->qty
+                        "qty" => $request->qty,
+                        'sub_total' =>$product->sale_price * $request->qty
         ];
 
         session()->put('cart', $cart);
+
+
 
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
@@ -180,6 +202,17 @@ else
 return redirect()->back();
 
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

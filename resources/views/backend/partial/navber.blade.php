@@ -1,21 +1,37 @@
 <aside class="main-sidebar">
+
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
+
+
+
+            {{-- <li>
+                {{auth()->user()->username}}
+            </li> --}}
+
+
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             @if(auth()->user()->type=='Admin')
 
-            <li>
-                {{auth()->user()->name}}
-            </li>
 
-            <li id="dashboardMainMenu">
+
+
+
+
+
+
+
+
+
+            <li id="mainNav">
                 <a href="{{ route('dash') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
 
             </li>
+
 
             <li id="brandNav">
                 <a href="{{route('pos')}}">
@@ -147,8 +163,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li id="addpayment"><a href="{{ route('addpay') }}"><i class="fa fa-circle-o"></i> Add
-                        Paymeny</a></li>
+                
                 <li id="managepayment"><a href="{{ route('paymanage') }}"><i class="fa fa-circle-o"></i> Manage
                         Payment</a></li>
             </ul>

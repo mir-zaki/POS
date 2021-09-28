@@ -108,7 +108,7 @@
                     <div class="form-group">
                         <label for="brand_name">Category Name</label>
                         <input type="text" class="form-control" id="category_name" name="category_name"
-                            placeholder="Enter category name" autocomplete="off">
+                            placeholder="Enter category name" autocomplete="off" required="">
                     </div>
                     <div class="form-group">
                         <label for="active">Status</label>

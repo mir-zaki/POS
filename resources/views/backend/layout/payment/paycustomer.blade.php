@@ -27,7 +27,7 @@
                         <h3 class="box-title">Payment</h3>
                     </div>
                     <!-- /.box-header -->
-                    <form role="form" action="" method="post">
+                    <form role="form" action="{{route('payments_customer')}}" method="post">
                         {{-- enctype="multipart/form-data"> --}}
                         @csrf
                         <div class="box-body">
@@ -35,64 +35,64 @@
 
 
                             <div class="form-group">
-                                <label for="">Date</label>
-                                <input type="text" class="form-control  date" data-provide="datepicker"
-                                    name="purchase_date" data-date-today-highlight="true" data-date-format="yyyy-mm-dd"
-                                    value="2021-08-22">
-                            </div>
+                                <label for="date" class="form-label">Date</label>
+                                <input required type="date" value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}"
+                                 class="form-control" id="pay_date" name="pay_date">
+                              </div>
 
+                              <div class="form-group">
+                                <label for="suppliername">Account Type</label>
+                                <input readonly type="text" class="form-control" id="type" name="type" placeholder="Amount" autocomplete="off" value="customer">
+                              </div>
 
-
-                            <div class="form-group">
-                                <label for="supplier_name">Payment Type</label>
-                                <select type="text" class="form-control select_group"
-
-
-                                id="supplier_name" name="supplier_name"
-                                    placeholder="supplier" autocomplete="off">
-                                    <option>Cash Recived</option>
-                                    <option>Cash Pay</option>
-
-                            </select>
-
-                            </div>
-
-
-
-
-
-
-                            <div class="form-group">
-                                <label for="supplier_name">Account Type</label>
-                                <select type="text" class="form-control select_group"
-
-
-                                id="supplier_name" name="supplier_name"
-                                    placeholder="supplier" autocomplete="off">
-                                    <option>Account Type</option>
-                                    {{-- @foreach ($customer as $add)
-
-                                    <option value="{{$add->id}}">{{$add->name}}</option>
-
-                                @endforeach --}}
-                            </select>
-
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label for="product_name">Accout ID</label>
-                                <select type="text" class="form-control select_group" id="product_name" name="product_name"
-                                    placeholder="Enter product name" autocomplete="off">
-                                    <option>Select ID</option>
-                                {{-- @foreach ($product as $add)
-
-                                    <option value="{{$add->id}}">{{$add->product_name}}</option>
-
-                                @endforeach --}}
+                              {{-- <div class="form-group">
+                                <label for="active">Account Type</label>
+                                <select class="form-control" id="type" name="type">
+                                    <option value="supplier">Supplier</option>
+                                    <option value="inactive">Inactive</option>
                                 </select>
+                            </div> --}}
+
+
+
+
+                            <div class="form-group">
+                                <label for="customer_name">Customer</label>
+
+                                <p>
+                                    @php
+                                        $customer_id = 0;
+                                    @endphp
+                                   @foreach ($sales as $sale)
+                                   {{$sale->customer->customer_name}}
+                                   @php
+                                       $customer_id = $sale->customer->id;
+                                   @endphp
+                                   @endforeach
+                                </p>
+                                <input type="text" value="{{$customer_id}}" name="customer_id" hidden>
                             </div>
+
+
+
+                            <div class="form-group">
+                                <label for="suppliername">Amount</label>
+                                <p>
+                                    {{$sale->total_price}}
+                                </p>
+                                <input type="text" name="amount" value="{{$sale->total_price}}" hidden>
+
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label for="suppliername">Pay</label>
+                                <input type="text" class="form-control" id="pay" name="pay" placeholder="Pay" autocomplete="off">
+
+                            </div>
+
 
 
                             <div class="form-group">
@@ -100,7 +100,7 @@
                                 <select type="text" class="form-control select_group"
 
 
-                                id="supplier_name" name="supplier_name"
+                                id="pay_method" name="pay_method"
                                     placeholder="supplier" autocomplete="off">
                                     <option>Hand Cash</option>
                                     <option>Bank</option>
@@ -111,6 +111,12 @@
                             </select>
 
                             </div>
+
+
+                            <div class="form-group">
+                                <label for="suppliername">Refarance</label>
+                                <input type="text" class="form-control" id="ref" name="ref" placeholder="Supplier name" autocomplete="off">
+                              </div>
 
 
                         </div>

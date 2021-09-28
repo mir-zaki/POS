@@ -61,7 +61,6 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         Route::post('/pos/cart',[PosCon::class,'poscart'])->name('poscart');
         Route::get('/cart/forget',[PosCon::class,'pos_forget'])->name('pos_forget');
         Route::post('/cart/pos',[PosCon::class,'pos_post'])->name('pos_post');
-
         //pos
 
         //customer start
@@ -89,9 +88,12 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
 
 
         //payment
-        Route::get('/addpay',[PaymentCon::class,'addpay'])->name('addpay');
+        Route::get('/addpay/supplier/{id}',[PaymentCon::class,'addpay_supplier'])->name('addpay_supplier');
+        Route::get('/addpay/customer/{id}',[PaymentCon::class,'addpay_customer'])->name('addpay_customer');
         Route::get('/payment/manage',[PaymentCon::class,'paymanage'])->name('paymanage');
-        Route::post('/payments',[PaymentCon::class,'payments'])->name('payments');
+        Route::get('/payment/manage/customer',[PaymentCon::class,'paymanage_customer'])->name('paymanage_customer');
+        Route::post('/payments/supplier',[PaymentCon::class,'payments_supplier'])->name('payments_supplier');
+        Route::post('/payments/custome',[PaymentCon::class,'payments_customer'])->name('payments_customer');
         //payment
 
 

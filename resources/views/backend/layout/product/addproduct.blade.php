@@ -36,7 +36,7 @@
             <h3 class="box-title">Add Product</h3>
           </div>
           <!-- /.box-header -->
-           <form role="form" action="{{route('productadded')}}" method="post" enctype="multipart/form-data">
+           <form name="myForm" role="form" action="{{route('productadded')}}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
             @csrf
               <div class="box-body">
 
@@ -59,13 +59,13 @@
 
                 <div class="form-group">
                   <label for="product_name">Product name</label>
-                  <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name" autocomplete="off"/>
+                  <input required="" type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter product name" autocomplete="off"/>
                 </div>
 
 
                 <div class="form-group">
                     <label for="price">Sell Price</label>
-                    <input type="text" class="form-control" id="sale_price" name="sale_price"
+                    <input required="" type="text" class="form-control" id="sale_price" name="sale_price"
                         placeholder="Enter price" autocomplete="off" />
                 </div>
 
@@ -76,7 +76,7 @@
 
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter
+                  <textarea  type="text" class="form-control" id="description" name="description" placeholder="Enter
                   description" autocomplete="off">
                   </textarea>
                 </div>
@@ -86,7 +86,7 @@
 
                 <div class="form-group">
                   <label for="category">Category</label>
-                  <select class="form-control select_group" id="category" name="category">
+                  <select class="form-control select_group" id="category" name="category" required="">
                     @foreach ($product as $add)
 
                     <option value="{{$add->id}}">{{$add->category_name}}</option>
@@ -100,7 +100,7 @@
 
                 <div class="form-group">
                   <label for="store">Availability</label>
-                  <select class="form-control" id="availability" name="availability">
+                  <select class="form-control" id="availability" name="availability" required="">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
@@ -159,6 +159,16 @@
 
   });
 </script>
+
+<script>
+    function validateForm() {
+      let x = document.forms["myForm"]["product_image"]["product_name"]["sale_price"]["description"]["category"]["availability"].value;
+      if (x == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+    }
+    </script>
 
 <div>
 </div>

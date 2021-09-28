@@ -2,6 +2,11 @@
 @section('content')
 
 
+@php
+    $total=0;
+@endphp
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -25,6 +30,15 @@
 
                     <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
             <br /> <br />
+
+
+            <button class="btn btn-primary" onclick="printDiv('printableArea')">
+                <i class="fa fa-printer"></i>Print
+            </button>
+
+            <a href="{{route('addpay_supplier',['id' => $id])}}" class="btn btn-primary">Payment</a>
+
+            <div id="printableArea">
 
           <div class="box">
             <div class="box-header">
@@ -50,6 +64,11 @@
 
                     @foreach($purchaseList as $key=>$list)
 
+                    @php
+
+                    $total=$list->sub_total+ $total
+                @endphp
+
                     <tr>
 
                         <td>{{ $loop->iteration }}</td>
@@ -67,8 +86,13 @@
                     @endforeach()
 
             </tbody>
+            </div>
 
               </table>
+
+              <tr>
+                <th>Total: {{$total}} TK</th>
+            </tr>
 
             </div>
             <!-- /.box-body -->
@@ -89,7 +113,7 @@
 
 
         </form>
-       
+
 
 
       </div><!-- /.modal-content -->
@@ -102,6 +126,21 @@
 
     <div class="control-sidebar-bg"></div>
   </div>
+
+
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+</script>
 
 
 @endsection

@@ -67,7 +67,7 @@
                                 <img src="{{url('/uploads/'.$product->product_image)}}" width="50px" alt="product image">
                             </td>
                             <td>{{$product->product_name}}</td>
-                            <td>{{$product->sell_price}}</td>
+                            <td>{{$product->sale_price}}</td>
                             <td>{!!$product->description!!}</td>
                             <td>{{$product->category->category_name}}</td>
                             <td>{{$product->availability}}</td>

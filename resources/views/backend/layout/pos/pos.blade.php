@@ -8,6 +8,9 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+
+
+
             <li class="active">POS</li>
         </ol>
     </section>
@@ -26,6 +29,20 @@
                     <div class="box-header">
                         <h3 class="box-title">POS</h3>
                     </div>
+
+
+
+                    <div>
+
+                        @if(session()->has('message'))
+                       <div class="row" style="padding: 20px;">
+                           <span class="alert alert-warning">{{session()->get('message')}}</span>
+                       </div>
+                       @endif
+
+                    </div>
+
+
                     <!-- /.box-header -->
                     <form role="form" action="{{route('poscart')}}" method="post">
                         {{-- enctype="multipart/form-data"> --}}
@@ -70,6 +87,11 @@
                             <button type="submit" class="btn btn-primary">Save</button>
 
                         </div>
+
+
+
+
+
                     </form>
                     @php
                             $cart = session()->get('cart');
@@ -144,7 +166,8 @@
 
                         <div class="form-group">
                             <label for="date" class="form-label">Date</label>
-                            <input required type="date" class="form-control" id="purchase_date" name="sale_date">
+                            <input required type="date" value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}"
+                             class="form-control" id="purchase_date" name="sale_date">
                           </div>
 
 
@@ -159,7 +182,7 @@
 
                             id="customer_name" name="customer_name"
                                 placeholder="Customer" autocomplete="off">
-                                <option value="01">Walk in Customer</option>
+                                <option value="1">Walk in Customer</option>
                                 @foreach ($customer as $add)
 
                                 <option value="{{$add->id}}">{{$add->customer_name}}</option>
@@ -168,6 +191,8 @@
                         </select>
 
                         </div>
+
+
 
                         <div class="form-group">
 

@@ -7,7 +7,7 @@
     <section class="content-header">
       <h1>
         Manage
-        Purchase</small>
+        Sale</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -24,8 +24,59 @@
           <div id="messages"></div>
 
 
-                    <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
+
             <br /> <br />
+
+
+
+
+            <div class="card">
+                <div class="container pt-lg-3 pb-lg-5">
+                    <div class="forms-top">
+                        <div class="form-right">
+                            <div class="form-inner-cont">
+                                <h3 class="title-small"></h3>
+                                <form action="#" method="get">
+                                    <div class="row book-form">
+                                        <div class="form-input col-md-3 col-sm-6 mt-3">
+                                            <label>Select Date</label>
+                                            <input  type="date" name="from_date" placeholder="Date"
+                                                required="">
+                                        </div>
+                                        <div class="bottom-btn col-md-4 col-sm-6 mt-3">
+                                            <button type="submit"
+                                                class="btn btn-style btn-primary w-100 px-2">Search
+                                </button>
+
+
+
+                                        <button class="btn btn-primary" onclick="printDiv('printableArea')">
+                                            <i class="fa fa-printer"></i>Print
+                                        </button>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+
+
+
+
+
 
           <div class="box">
             <div class="box-header">
@@ -62,8 +113,7 @@
 
                         <td class="">
                             <a href="{{route('sale_list',$sa->id)}}"><i class="material-icons">view_list</i></a>
-                          <a href="#"><i class="material-icons">cancel</i></a>
-                          <a href="#"><i class="material-icons">edit</i></a>
+
 
                         </td>
 

@@ -1,10 +1,16 @@
 @extends('backend.master')
 @section('content')
 
+@php
+    $total=0;
+@endphp
+
+
 
 <div class="content-wrapper">
+    <head><title>Sale</title></head>
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    {{-- <section class="content-header">
       <h1>
         Sale Details</small>
       </h1>
@@ -12,7 +18,7 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Sale</li>
       </ol>
-    </section>
+    </section> --}}
 
     <!-- Main content -->
     <section class="content">
@@ -23,12 +29,28 @@
           <div id="messages"></div>
 
 
-                    <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
+
             <br /> <br />
+            <div>
+
+                <!-- Button trigger modal -->
+                <button class="btn btn-primary" onclick="printDiv('printableArea')">
+                    <i class="fa fa-printer"></i>Print
+                </button>
+
+                <a href="{{route('addpay_customer',['id' => $id])}}" class="btn btn-primary">Payment</a>
+                {{-- <a href="{{route('addpay_customer')}}" class="btn btn-primary">Payment</a> --}}
+
+                <br>
+                <br>
+
+            </div>
+
+            <div id="printableArea">
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Purchase Details</h3>
+              <h3 class="box-title">Sale Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -50,6 +72,11 @@
 
                     @foreach($salelist as $key=>$list)
 
+                    @php
+
+                    $total=$list->sub_total+ $total
+                @endphp
+
                     <tr>
 
                         <td>{{ $loop->iteration }}</td>
@@ -68,7 +95,14 @@
 
             </tbody>
 
+
+
               </table>
+              <tr>
+                <th>Total: {{$total}} TK</th>
+            </tr>
+
+            </div>
 
             </div>
             <!-- /.box-body -->
@@ -92,6 +126,9 @@
 
 
 
+
+
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
@@ -102,6 +139,23 @@
 
     <div class="control-sidebar-bg"></div>
   </div>
+
+
+
+
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+</script>
 
 
 @endsection

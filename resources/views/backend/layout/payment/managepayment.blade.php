@@ -9,12 +9,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Manage
-            Payment</small>
+            Supplier
+            Payments</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Manage Payment</li>
+            <li class="active">Supplier
+                Payments</li>
         </ol>
     </section>
 
@@ -32,7 +33,8 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Manage Payment</h3>
+                        <h3 class="box-title">Supplier
+                            Payments</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -55,23 +57,23 @@
 
                             <tbody>
 
+
                                 @foreach($pay as $supp)
+                                @php
+                                $due=$supp->amount-$supp->pay ;
+                                @endphp
                                     <tr>
                                         <td>{{ $supp->payment_date }}</td>
                                         <td>{{ $supp->account_type }}</td>
-                                        <td>{{ $supp->supplier->supplier_name}}</td>
+                                        <td>{{ $supp->name}}</td>
                                         <td>{{ $supp->amount }}</td>
                                         <td>{{ $supp->pay }}</td>
                                         <td>{{ $supp->pay_method }}</td>
-                                        <td>Due</td>
+                                        <td>{{$due}}</td>
                                         <td>{{ $supp->refer }}</td>
 
 
-                                        <td class="">
-                                            <a href="#"><i class="material-icons">cancel</i></a>
-                                            <a href="#"><i class="material-icons">edit</i></a>
 
-                                        </td>
 
 
                                         </td>

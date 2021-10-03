@@ -15,9 +15,10 @@ class PaymentCon extends Controller
 {
     public function addpay_supplier($id){
 
-        $buys=Purchase::with('supplier')->where('id',$id)->get();
+        $buys=Purchase::with('supplier')->where('id',$id)->first();
 
-        //dd($buys);
+
+
         return view('backend.layout.payment.paysupplier',compact('buys'));
 
     }
@@ -33,7 +34,7 @@ class PaymentCon extends Controller
     public function paymanage(){
 
         $pay=Payment::all();
-        
+
         return view('backend.layout.payment.managepayment',compact('pay'));
 
     }
@@ -54,9 +55,9 @@ class PaymentCon extends Controller
             'payment_date'=>$request->pay_date,
             'account_type'=>$request->type,
             'name'=>$request->supplier_name,
-            'refer'=>$request->ref,
             'amount'=>$request->amount,
             'pay'=>$request->pay,
+            'refer'=>$request->ref,
             'pay_method'=>$request->pay_method
         ]);
         return redirect()->route('paymanage');

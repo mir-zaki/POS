@@ -17,7 +17,7 @@ class SupplierCon extends Controller
 
     public function suppliermanage ()
     {
-        $supplier=Supplier::all();
+        $supplier=Supplier::orderBy('id','desc')->get();
         // dd($supplier->all());
 
          return view('backend.layout.supplier.managesupp',compact('supplier'));

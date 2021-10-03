@@ -162,9 +162,19 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
+
             <ul class="treeview-menu">
-                
-                <li id="managepayment"><a href="{{ route('paymanage') }}"><i class="fa fa-circle-o"></i> Manage
+
+                <li id="managepayment"><a href="{{ route('paymanage') }}"><i class="fa fa-circle-o"></i> Supplier
+                        Payment</a></li>
+
+                <li id="managepayment"><a href="{{ route('paymanage_customer') }}"><i class="fa fa-circle-o"></i> Customer
+                            Payment</a></li>
+
+            </ul>
+            <ul class="treeview-menu">
+
+                <li id="managepayment"><a href="{{ route('paymanage') }}"><i class="fa fa-circle-o"></i> Supplier
                         Payment</a></li>
             </ul>
         </li>

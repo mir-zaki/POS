@@ -38,8 +38,8 @@ class PurchaseCon extends Controller
     public function purchase_list ($id)
     {
 
-        
-        $purchaseList=PurchaseDetails::where('purchase_id',$id)->get();
+
+        $purchaseList=PurchaseDetails::where('purchase_id',$id)->orderBy('id','desc')->get();
 
 
         return view('backend.layout.purchase.purchaselist',compact('purchaseList','id'));

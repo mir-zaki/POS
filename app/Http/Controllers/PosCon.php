@@ -25,9 +25,11 @@ class PosCon extends Controller
 
     public function manage_sale(Request $request){
         if($request->from_date){
-            $salemanage=Sale::where('sale_date',$request->from_date)->get();
-        }else{
-            $salemanage=Sale::all();
+            $salemanage=Sale::where('sale_date',$request->from_date)->orderBy('id','desc')->get();
+        }
+
+        else{
+            $salemanage=Sale::orderBy('id','desc')->get();
         }
         return view('backend.layout.pos.managesale',compact('salemanage'));
 
@@ -105,11 +107,17 @@ if($stock)
         'qty'=> $cart['qty'],
 
     ]);
+
+
 }
+
+
 
     }
     $request->session()->forget('cart');
-            return redirect()->route('sale_list',$details->id);
+return redirect()->route('sale_list',$saleid);
+
+
 }
 
 
@@ -217,5 +225,3 @@ return redirect()->back();
 
 
 }
-
-

@@ -70,7 +70,7 @@
                                    @endphp
                                    @endforeach
                                 </p>
-                                <input type="text" value="{{$customer_id}}" name="customer_id" hidden>
+                                <input required="" type="text" value="{{$customer_id}}" name="customer_id" hidden >
                             </div>
 
 
@@ -80,7 +80,7 @@
                                 <p>
                                     {{$sale->total_price}}
                                 </p>
-                                <input type="text" name="amount" value="{{$sale->total_price}}" hidden>
+                                <input required="" type="text" name="amount" value="{{$sale->total_price}}" hidden>
 
                             </div>
 
@@ -89,7 +89,7 @@
 
                             <div class="form-group">
                                 <label for="suppliername">Pay</label>
-                                <input type="text" class="form-control" id="pay" name="pay" placeholder="Pay" autocomplete="off">
+                                <input type="text" class="form-control" id="pay" name="pay" placeholder="Pay" autocomplete="off" required="">
 
                             </div>
 

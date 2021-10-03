@@ -35,194 +35,207 @@
                     <div>
 
                         @if(session()->has('message'))
-                       <div class="row" style="padding: 20px;">
-                           <span class="alert alert-warning">{{session()->get('message')}}</span>
-                       </div>
-                       @endif
+                            <div class="row" style="padding: 20px;">
+                                <span
+                                    class="alert alert-warning">{{ session()->get('message') }}</span>
+                            </div>
+                        @endif
 
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
 
-                    <!-- /.box-header -->
-                    <form role="form" action="{{route('poscart')}}" method="post">
-                        {{-- enctype="multipart/form-data"> --}}
-                        @csrf
+                            <!-- /.box-header -->
+                            <form role="form" action="{{ route('poscart') }}" method="post">
+                                {{-- enctype="multipart/form-data"> --}}
+                                @csrf
 
-                        <div class="box-body">
-
-
-                             <div class="form-group">
-                                <label for="product_name">Product name</label>
-                                <select type="text" class="form-control select_group" id="product_name" name="product_name"
-                                    placeholder="Enter product name" autocomplete="off">
-                                    <option>Select Product</option>
-                                @foreach ($product as $add)
-
-                                    <option value="{{$add->id}}">{{$add->product_name}}</option>
-
-                                @endforeach
-                                </select>
-                            </div>
+                                <div class="box-body">
 
 
+                                    <div class="form-group">
+                                        <label for="product_name">Product name</label>
+                                        <select type="text" class="form-control select_group" id="product_name"
+                                            name="product_name" placeholder="Enter product name" autocomplete="off">
+                                            <option>Select Product</option>
+                                            @foreach($product as $add)
 
+                                                <option value="{{ $add->id }}">{{ $add->product_name }}</option>
 
-
-                            <div class="form-group">
-                                <label for="qty">Qty</label>
-                                <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty"
-                                    autocomplete="off" />
-                            </div>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
 
 
 
 
-
-
-                        </div>
-                        <!-- /.box-body -->
-
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
-
-                        </div>
+                                    <div class="form-group">
+                                        <label for="qty">Qty</label>
+                                        <input type="text" class="form-control" id="qty" name="qty"
+                                            placeholder="Enter Qty" autocomplete="off" />
+                                    </div>
 
 
 
 
 
-                    </form>
-                    @php
-                            $cart = session()->get('cart');
-                            $total=0;
-                    @endphp
 
 
-                    <form role="form" action="{{ route('Purchase_manage') }}" method="post">
-                        @csrf
-                    <div class="box-body">
-                        <table id="manageTable" class="table table-bordered table-striped">
-                          <thead>
-                          <tr>
-                            <th style="width:80px">SL</th>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th>Qty</th>
-                            <th>Sub Total</th>
-                            <th><a href="{{route('pos_forget')}}"><i class="fa fa-trash"></i></a></th>
+                                </div>
+                                <!-- /.box-body -->
 
-                            </tr>
-                          </thead>
-                          <tbody>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Save</button>
 
-                            @if($cart)
-                            @foreach($cart as $carts)
+                                </div>
+
+
+
+
+
+                            </form>
                             @php
-                                $subtotal=$carts['sale_price']*$carts['qty'];
-
-                                $total=$subtotal+ $total
+                                $cart = session()->get('cart');
+                                $total=0;
                             @endphp
 
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{$carts['product_name']}}</td>
-                                <td>{{$carts['sale_price']}}</td>
-                                <td>{{$carts['qty']}}</td>
 
 
-
-                                <td>{{$subtotal}}</td>
-                                <td><a href="{{route('pos_forget')}}"><i class="fa fa-trash"></i></a></td>
-
-
-
-
-
-
-                            </tr>
-                            @endforeach()
-                            @endif
-
-
-                      </tbody>
-
-
-                        </table>
-                        <br>
-                        <tr>
-                            <th>Total:  {{$total}} TK</th>
-                        </tr>
-
-
-                    </form>
-                    <br>
-                    <br>
-                    <br>
-
-
-                    <form action="{{route('pos_post')}}" method="post">
-                        @csrf
-
-                        <div class="form-group">
-                            <label for="date" class="form-label">Date</label>
-                            <input required type="date" value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}"
-                             class="form-control" id="purchase_date" name="sale_date">
-                          </div>
-
-
-
-
-
-
-                        <div class="form-group">
-                            <label for="customer_name">Customer</label>
-                            <select type="text" class="form-control select_group"
-
-
-                            id="customer_name" name="customer_name"
-                                placeholder="Customer" autocomplete="off">
-                                <option value="1">Walk in Customer</option>
-                                @foreach ($customer as $add)
-
-                                <option value="{{$add->id}}">{{$add->customer_name}}</option>
-
-                            @endforeach
-                        </select>
 
                         </div>
 
 
 
-                        <div class="form-group">
+                        <div class="col-md-6">
 
-                            <label for="price">Discount</label>
-                            <input type="text" class="form-control" id="discount" name="discount"
-                                placeholder="%" autocomplete="off" />
+                            <form role="form" action="{{ route('Purchase_manage') }}" method="post">
+                                @csrf
+                                <div class="box-body">
+                                    <table id="manageTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:80px">SL</th>
+                                                <th>Item</th>
+                                                <th>Price</th>
+                                                <th>Qty</th>
+                                                <th>Sub Total</th>
+                                                <th><a href="{{ route('pos_forget') }}"><i
+                                                            class="fa fa-trash"></i></a></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @if($cart)
+                                                @foreach($cart as $carts)
+                                                    @php
+                                                        $subtotal=$carts['sale_price']*$carts['qty'];
+
+                                                        $total=$subtotal+ $total
+                                                    @endphp
+
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $carts['product_name'] }}</td>
+                                                        <td>{{ $carts['sale_price'] }}</td>
+                                                        <td>{{ $carts['qty'] }}</td>
+
+
+
+                                                        <td>{{ $subtotal }}</td>
+                                                        <td><a href="{{ route('pos_forget') }}"><i
+                                                                    class="fa fa-trash"></i></a></td>
+
+
+
+
+
+
+                                                    </tr>
+                                                @endforeach()
+                                            @endif
+
+
+                                        </tbody>
+
+
+                                    </table>
+                                    <br>
+                                    <tr>
+                                        <th>Total: {{ $total }} TK</th>
+                                    </tr>
+
+
+                            </form>
+
+                            <form action="{{ route('pos_post') }}" method="post">
+                                @csrf
+
+                                <div class="form-group">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input required type="date" value="{{ date('Y-m-d') }}"
+                                        min="{{ date('Y-m-d') }}" class="form-control"
+                                        id="purchase_date" name="sale_date">
+                                </div>
+
+
+
+
+
+
+                                <div class="form-group">
+                                    <label for="customer_name">Customer</label>
+                                    <select type="text" class="form-control select_group" id="customer_name"
+                                        name="customer_name" placeholder="Customer" autocomplete="off">
+
+                                        @foreach($customer as $add)
+
+                                            <option value="{{ $add->id }}">{{ $add->customer_name }}</option>
+
+                                        @endforeach
+                                    </select>
+
+                                </div>
+
+
+
+                                <div class="form-group">
+
+                                    <label for="price">Discount</label>
+                                    <input type="text" class="form-control" id="discount" name="discount"
+                                        placeholder="%" autocomplete="off" />
+                                </div>
+
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    {{-- <a href="{{route('Purchase_manage') }}"
+                                    type="button" class="btn btn-info" >Submit</a> --}}
+                                </div>
+
+                            </form>
+
+
+
                         </div>
+                    </div>
 
-
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            {{-- <a href="{{route('Purchase_manage')}}" type="button" class="btn btn-info" >Submit</a> --}}
-                        </div>
-
-                    </form>
-
-                      </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+                <!-- /.box-body -->
             </div>
-            <!-- col-md-12 -->
-
+            <!-- /.box -->
         </div>
-        <!-- /.row -->
+        <!-- col-md-12 -->
+
+</div>
+<!-- /.row -->
 
 
 
-    </section>
-    <!-- /.content -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
@@ -258,20 +271,19 @@
         });
 
     });
-
 </script>
 <script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      date_input.datepicker({
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      })
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
     })
-  </script>
+</script>
 
 <div>
 </div>

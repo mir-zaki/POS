@@ -18,7 +18,7 @@ class CustomerCon extends Controller
     public function customermanage ()
     {
 
-        $customer=Customer::all();
+        $customer=Customer::orderBy('id','desc')->get();
         // dd($customer->all());
 
         return view('backend.layout.customer.managecus',compact('customer'));

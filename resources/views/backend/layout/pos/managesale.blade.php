@@ -1,7 +1,9 @@
 @extends('backend.master')
 @section('content')
 
-
+@php
+    $total=0;
+@endphp
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -76,7 +78,7 @@
 
 
 
-
+<div id="printableArea">
 
           <div class="box">
             <div class="box-header">
@@ -99,6 +101,10 @@
                 <tbody>
 
                     @foreach($salemanage as $sa)
+                    @php
+
+                    $total=$sa->total_price+ $total
+                @endphp
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>inv{{$sa->id}}m</td>
@@ -111,8 +117,9 @@
 
 
 
+
                         <td class="">
-                            <a href="{{route('sale_list',$sa->id)}}"><i class="material-icons">view_list</i></a>
+                            <a href="{{route('sale_list',$sa->id)}}"><i class="fa fa-align-justify"></i></a>
 
 
                         </td>
@@ -125,6 +132,7 @@
             </tbody>
 
               </table>
+              <td>TOTAL- {{$total}} TK</td>
 
             </div>
             <!-- /.box-body -->
@@ -135,7 +143,7 @@
       </div>
       <!-- /.row -->
 
-
+</div>
     </section>
     <!-- /.content -->
   </div>
@@ -157,6 +165,18 @@
 
     <div class="control-sidebar-bg"></div>
   </div>
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
 
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+</script>
 
 @endsection

@@ -17,7 +17,7 @@ class ProductCon extends Controller
 
     public function product_add ()
     {
-        $products=product::with("category")->paginate(5);
+        $products=product::with("category")->orderBy('id','desc')->paginate(5);
         // dd($products->all());
         return view('backend.layout.product.products',compact('products'));
     }

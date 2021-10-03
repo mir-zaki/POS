@@ -23,9 +23,15 @@
 
           <div id="messages"></div>
 
+          <div id="printableArea">
+
 
                     <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
             <br /> <br />
+
+            <button class="btn btn-primary" onclick="printDiv('printableArea')">
+                <i class="fa fa-printer"></i>Print
+            </button>
 
           <div class="box">
             <div class="box-header">
@@ -88,7 +94,7 @@
       </div>
       <!-- /.row -->
 
-
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -110,6 +116,20 @@
 
     <div class="control-sidebar-bg"></div>
   </div>
+
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+</script>
 
 
 @endsection

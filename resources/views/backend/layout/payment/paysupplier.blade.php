@@ -3,6 +3,8 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+
+
         <h1>
             Payments
         </h1>
@@ -42,46 +44,22 @@
 
                               <div class="form-group">
                                 <label for="suppliername">Account Type</label>
-                                <input readonly type="text" class="form-control" id="type" name="type" placeholder="Amount" autocomplete="off" value="supplier">
+                                <input readonly type="text" class="form-control" id="type" name="type" placeholder="" autocomplete="off" value="supplier">
                               </div>
 
-                              {{-- <div class="form-group">
-                                <label for="active">Account Type</label>
-                                <select class="form-control" id="type" name="type">
-                                    <option value="supplier">Supplier</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div> --}}
+                              <div class="form-group">
+                                <label for="suppliername">Supplier</label>
+                                <input readonly type="text" class="form-control" id="supplier_name" name="supplier_name" placeholder="" autocomplete="off" value="{{$buys->supplier->supplier_name}}">
+                              </div>
 
 
-
-
-
-
-
-                            <div class="form-group">
-                                <label for="supplier_name">Supplier</label>
-
-                                <p>
-                                    @php
-                                        $supplier_id = 0;
-                                    @endphp
-                                   @foreach ($buys as $add)
-                                   {{$add->supplier->supplier_name}}
-                                   @php
-                                       $supplier_id = $add->supplier->id;
-                                   @endphp
-                                   @endforeach
-                                </p>
-                                <input type="text" value="{{$supplier_id}}" name="supplier_name" hidden>
-                            </div>
-
-
-
-                            <div class="form-group">
+                              <div class="form-group">
                                 <label for="suppliername">Amount</label>
-                                <input value="{{$buys}}" type="text" class="form-control" id="amount" name="amount" placeholder="Amount" autocomplete="off">
+                                <input readonly type="text" class="form-control" id="amount" name="amount" placeholder="" autocomplete="off" value="{{$buys->total_price}}">
                               </div>
+
+
+
 
 
 

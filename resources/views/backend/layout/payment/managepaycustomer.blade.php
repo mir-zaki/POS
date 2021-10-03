@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Manage
-            Payment</small>
+            Customer
+            Payments</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Manage Payment</li>
+            <li class="active">Customer Payment</li>
         </ol>
     </section>
 
@@ -34,7 +34,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Manage Payment</h3>
+                        <h3 class="box-title">Customer Payments</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">

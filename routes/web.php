@@ -9,11 +9,12 @@ use App\Http\Controllers\PaymentCon;
 use App\Http\Controllers\SupplierCon;
 use App\Http\Controllers\ProductCon;
 use App\Http\Controllers\PurchaseCon;
+use App\Http\Controllers\ReportCon;
 use App\Http\Controllers\StockCon;
+use App\Http\Controllers\ReturnProductCon;
 use App\Http\Controllers\UserCon;
 use Illuminate\Support\Facades\Route;
-
-
+use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,14 +33,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[LoginCon::class,'log'])->name('log');
 Route::post('/login',[LoginCon::class,'login_user'])->name('login');
-Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
+Route::group(['middleware'=>'auth'],function()
 // ,'middleware'=>'auth'
 
 {
-    Route::group(['middleware'=>'Admin'],function (){
+    Route::group(['prefix'=>'admin','middleware'=>'Admin'],function (){
+        //dash
+        Route::get('/dashboard',[DashboardCon::class,'dashboard'])->name('dash');
+        //dash
 
+        //user start
+        Route::get('/user',[UserCon::class,'user'])->name('user');
+        Route::get('/user/manage',[UserCon::class,'usermanage'])->name('usermanage');
+        Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
+        Route::get('/delete/{id}',[UserCon::class,'delete'])->name('delete');
+        //user end
 
-
+        });
 
 
 
@@ -47,11 +57,7 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
 
         // Login end
 
-        //user start
-        Route::get('/user',[UserCon::class,'user'])->name('user');
-        Route::get('/user/manage',[UserCon::class,'usermanage'])->name('usermanage');
-        Route::post('/useradd',[UserCon::class,'useradd'])->name('useradd');
-        //user end
+
 
         //pos
         Route::get('/pos',[PosCon::class,'pos'])->name('pos');
@@ -62,6 +68,16 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         Route::get('/cart/forget',[PosCon::class,'pos_forget'])->name('pos_forget');
         Route::post('/cart/pos',[PosCon::class,'pos_post'])->name('pos_post');
         //pos
+
+        //return
+        Route::get('/return',[ReturnProductCon::class,'return'])->name('return');
+        Route::get('/manage/return',[ReturnProductCon::class,'manage_return'])->name('manage_return');
+        Route::get('/manage/return/list/{id}',[ReturnProductCon::class,'return_list'])->name('return_list');
+        Route::get('/return/sale/details',[ReturnProductCon::class,'return_details'])->name('return_details');
+        Route::post('/return/cart',[ReturnProductCon::class,'poscart'])->name('poscart');
+        Route::get('/return/forget',[ReturnProductCon::class,'pos_forget'])->name('pos_forget');
+        Route::post('/cart/return',[ReturnProductCon::class,'pos_post'])->name('pos_post');
+        //return
 
         //customer start
         Route::get('/customer',[CustomerCon::class,'customers'])->name('customer');
@@ -132,10 +148,22 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function()
         // Route::post('/purchase/add',[StockCon::class,'purchases'])->name('Purchase_add');
         // stock
 
-    });
+        //report
+        Route::get('/report/purchase',[ReportCon::class,'report_purchase'])->name('report_purchase');
+        Route::get('/report/sales',[ReportCon::class,'report_sale'])->name('report_sale');
+        //report
+
+
+
+
 
 
     Route::get('/logout',[LoginCon::class,'logout'])->name('logout');
 });
+
+
+
+
+
 
 

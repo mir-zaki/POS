@@ -10,8 +10,10 @@
   <nav class="navbar navbar-static-top">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-      <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-user-circle"></i> <span>{{ auth()->user()->username }}</span>
+      {{-- <span class="sr-only">Toggle navigation</span> --}}
     </a>
+
 
     {{-- <div><i style="text-align-last: 30" class="fa fa-user-circle-o">{{auth()->user()->username}}</i></div> --}}
   </nav>

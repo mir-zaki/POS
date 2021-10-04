@@ -41,4 +41,21 @@ return redirect()->route('usermanage');
 
 
 }
+
+
+public function delete ($id)
+{
+
+    $user=User::find($id);
+    // dd($customer);
+    if ($user){
+        $user->delete();
+        return redirect()->back()->with('message','User is Deleted');
+
+    }
+    return redirect()->back()->with('message','User is not Deleted');
+
+
+
+}
 }

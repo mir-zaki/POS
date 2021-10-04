@@ -27,12 +27,12 @@
                     <div class="inner">
                         <h3>{{$sale_value}}</h3>
 
-                        <p>Stocks Value</p>
+                        <p>Sale Value</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="http://localhost/zakii/products/" class="small-box-footer">More info <i
+                    <a href="{{route('manage_sale')}}" class="small-box-footer">More info <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="http://localhost/zakii/products/" class="small-box-footer">More info <i
+                    <a href="#" class="small-box-footer">More info <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -96,7 +96,7 @@
 
 
             <!-- ./col -->
-            
+
             <!-- ./col -->
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
@@ -109,7 +109,7 @@
                     <div class="icon">
                         <i class="ion ion-android-people"></i>
                     </div>
-                    <a href="http://localhost/zakii/users/" class="small-box-footer">More info <i
+                    <a href="{{route('usermanage')}}" class="small-box-footer">More info <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -149,6 +149,8 @@
                     <a href="#" class="small-box-footer">More info <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
+
+
             </div>
             <!-- ./col -->
 
@@ -162,5 +164,6 @@
     </section>
     <!-- /.content -->
 </div>
+
 
 @endsection

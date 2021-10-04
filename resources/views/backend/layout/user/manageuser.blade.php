@@ -59,10 +59,8 @@
                                     <td class="">
                                         {{-- <a href=""><i class="material-icons">details</i></a> --}}
                                         <a onclick="return confirm('Are you sure you want to delete this item?');"
-                                            href=""><i
-                                                class="material-icons">cancel</i></a>
-                                        <a href=""><i
-                                                class="material-icons">edit</i></a>
+                                            href="{{route('delete',$user->id)}}"><i
+                                                class="fa fa-close" style="font-size:24px"></i></a>
 
                                     </td>
 

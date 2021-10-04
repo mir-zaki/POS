@@ -49,8 +49,6 @@
                 <thead>
                 <tr>
                     <th>SL</th>
-                  <th>Image</th>
-
                   <th>Product Name</th>
                   <th>Sell Price</th>
                   <th>Description</th>
@@ -63,9 +61,6 @@
                     @foreach($products as $product)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <img src="{{url('/uploads/'.$product->product_image)}}" width="50px" alt="product image">
-                            </td>
                             <td>{{$product->product_name}}</td>
                             <td>{{$product->sale_price}}</td>
                             <td>{!!$product->description!!}</td>

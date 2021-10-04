@@ -22,8 +22,21 @@ class LoginCon extends Controller
 
         // dd($request->all());
         $req=$request->except('_token');
+        // dd(Auth::attempt($req));
         if(Auth::attempt($req)){
-            return redirect()->route('dash');
+            if(auth()->user()->type=='Admin'){
+                return redirect()->route('dash');
+            }
+            elseif(auth()->user()->type=='manager'){
+                return redirect()->route('pos');
+            }
+            elseif(auth()->user()->type=='shopboy'){
+                return redirect()->route('pos');
+            }
+            else{
+                Auth::logout();
+            }
+
         }
         return redirect()->back()->with('message','Wrong Password Or User Name.........');
     }

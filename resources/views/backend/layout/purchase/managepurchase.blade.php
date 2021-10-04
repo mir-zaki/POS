@@ -29,9 +29,7 @@
                     <a href="{{route('product')}}" class="btn btn-primary">Add Purchase</a>
             <br /> <br />
 
-            <button class="btn btn-primary" onclick="printDiv('printableArea')">
-                <i class="fa fa-printer"></i>Print
-            </button>
+            
 
           <div class="box">
             <div class="box-header">
@@ -71,8 +69,6 @@
 
                         <td class="">
                             <a href="{{route('Purchaselist', $purc->id)}}"><i class="material-icons">view_list</i></a>
-                          <a href="{{route('purchases_delete',$purc->id)}}"><i class="material-icons">cancel</i></a>
-                          <a href="#"><i class="material-icons">edit</i></a>
 
                         </td>
 
@@ -117,19 +113,7 @@
     <div class="control-sidebar-bg"></div>
   </div>
 
-  <script type="text/javascript">
-    function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
 
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        document.body.innerHTML = originalContents;
-    }
-
-</script>
 
 
 @endsection

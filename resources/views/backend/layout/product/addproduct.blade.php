@@ -51,11 +51,7 @@
                   </div>
                 </div> --}}
 
-                <div class="form-group">
-                    <label for="description">Upload Product Image</label>
-                    <input type="file" class="form-control" name="product_image">
-                </div>
-
+               
 
                 <div class="form-group">
                   <label for="product_name">Product name</label>

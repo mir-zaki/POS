@@ -67,8 +67,8 @@
                                         <td>{{ $customers->phone}}</td>
                                         <td class="">
                                             {{-- <a href=""><i class="material-icons">details</i></a> --}}
-                                            <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('customer_delete',$customers->id)}}}"><i class="material-icons">cancel</i></a>
-                                            <a href="{{route('customer_edit',$customers->id)}}}"><i class="material-icons">edit</i></a>
+                                            <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('customer_delete',$customers->id)}}}"><i class="fa fa-close" style="font-size:24px"></i></a>
+                                            <a href="{{route('customer_edit',$customers->id)}}}"><i class="fa fa-pencil" style="font-size:24px"></i></a>
 
                                           </td>
 

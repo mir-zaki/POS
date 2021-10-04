@@ -8,8 +8,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Manage
-        Sale</small>
+        REPORT</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -27,6 +26,54 @@
 
 
 
+            <br /> <br />
+
+
+
+
+            <div class="card">
+                <div class="container pt-lg-3 pb-lg-5">
+                    <div class="forms-top">
+                        <div class="form-right">
+                            <div class="form-inner-cont">
+                                <h3 class="title-small"></h3>
+                                <form action="#" method="get">
+                                    <div class="row book-form">
+                                        <div class="form-input col-md-3 col-sm-6 mt-3">
+                                            <label>Select Date</label>
+                                            <input  type="date" name="from_date" placeholder="Date"
+                                                required="">
+                                        </div>
+                                        <div class="bottom-btn col-md-4 col-sm-6 mt-3">
+                                            <button type="submit"
+                                                class="btn btn-style btn-primary w-100 px-2">Search
+                                </button>
+
+
+
+                                        <button class="btn btn-primary" onclick="printDiv('printableArea')">
+                                            <i class="fa fa-print"></i>Print
+                                        </button>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+
 
 
 
@@ -34,7 +81,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Manage Products</h3>
+              <h3 class="box-title">Sales Report</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -42,12 +89,10 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Invoice No</th>
                   <th>Date</th>
                   <th>Customer</th>
                   <th>Total Price</th>
                   <th>Sale By</th>
-                  <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -59,22 +104,11 @@
                 @endphp
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>inv{{$sa->id}}m</td>
                         <td>{{$sa->sale_date}}</td>
                         <td>{{$sa->Customer->customer_name}}</td>
                         <td>{{$sa->total_price}}</td>
                         <td>{{$sa->User->username}}</td>
 
-
-
-
-
-
-                        <td class="">
-                            <a href="{{route('sale_list',$sa->id)}}"><i class="fa fa-align-justify"></i></a>
-
-
-                        </td>
 
 
 
@@ -117,6 +151,18 @@
 
     <div class="control-sidebar-bg"></div>
   </div>
+  <script type="text/javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
 
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+</script>
 
 @endsection

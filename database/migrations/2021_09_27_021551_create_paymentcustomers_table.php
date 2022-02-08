@@ -15,12 +15,13 @@ class CreatePaymentcustomersTable extends Migration
     {
         Schema::create('paymentcustomers', function (Blueprint $table) {
             $table->id();
+            $table->integer('sale_id');
             $table->string('payment_date');
-            $table->string('account_type');
-            $table->string('name');
+            $table->string('customer_id');
             $table->string('refer');
             $table->integer('amount');
             $table->integer('pay');
+            $table->integer('due');
             $table->string('pay_method');
             $table->timestamps();
         });

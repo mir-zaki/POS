@@ -13,4 +13,9 @@ class Pos extends Model
         return $this->belongsto(Customer::class);
 
         }
+        public function buy_price(){
+
+            return $this->belongsto(PurchaseDetails::class,'product_id','unit_price');
+
+            }
 }

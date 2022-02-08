@@ -107,6 +107,7 @@ $stock=Stock::where('product_id',$cart['product_id'])->first();
 if($stock)
 {
     $stock->update([
+        'buy_price' => $stock['buy_price'],
         'qty' =>$stock->qty + $cart['qty']
     ]);
 
@@ -117,6 +118,7 @@ else
     Stock::create([
 
         'product_id'=>$cart['product_id'],
+        'buy_price' => $cart['buy_price'],
         'qty'=> $cart['qty'],
 
     ]);

@@ -17,6 +17,7 @@ class CreateStocksTable extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('qty');
+            $table->string('buy_price');
             $table->timestamps();
         });
     }

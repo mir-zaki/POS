@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Paymentcustomer;
 use App\Models\product;
+use App\Models\PurchaseDetails;
+use App\Models\revenue;
 use App\Models\Sale;
 use App\Models\Stock;
 use App\Models\Saledetails;
@@ -16,7 +19,7 @@ class PosCon extends Controller
 
 
         $customer=Customer::all();
-        $product=product::all();
+        $product=Stock::all();
         // dd($customer);
         return view('backend.layout.pos.pos',compact('customer','product'));
 
@@ -24,13 +27,10 @@ class PosCon extends Controller
     }
 
     public function manage_sale(Request $request){
-        if($request->from_date){
-            $salemanage=Sale::where('sale_date',$request->from_date)->orderBy('id','desc')->get();
-        }
 
-        else{
-            $salemanage=Sale::orderBy('id','desc')->get();
-        }
+            $salemanage=Sale::with('payment')->orderBy('id','desc')->get();
+            dd($salemanage);
+
         return view('backend.layout.pos.managesale',compact('salemanage'));
 
 
@@ -45,8 +45,11 @@ class PosCon extends Controller
         //$purchaseList = PurchaseDetails::where('purchase_id',$purchase->purchase_id)->get();
         $salelist=Saledetails::where('sale_id',$id)->get();
 
+        $customer=Sale::with('customer')->where('id',$id)->get();
+        $payment=Paymentcustomer::where('sale_id',$id)->get();
+//dd($payment);
 
-        return view('backend.layout.pos.salelist',compact('salelist','id'));
+        return view('backend.layout.pos.salelist',compact('salelist','id','customer','payment'));
 
 
 
@@ -56,9 +59,14 @@ class PosCon extends Controller
 
     public function pos_post( Request $request){
 
+
+//dd($request);
+
         $carts=session()->get('cart');
 
         $total=array_sum(array_column($carts,'sub_total'));
+
+
 
         $saleid=Sale::create([
             'sale_date'=>$request->sale_date,
@@ -81,6 +89,16 @@ class PosCon extends Controller
                 'qty' => $cart['qty'],
                 'sale_price' => $cart['sale_price'],
                 'sub_total' => $cart['sale_price'] * $cart['qty'],
+            ]);
+
+
+                revenue::create([
+
+                'sale_date'=>$request->sale_date,
+                'product_id' => $cart['product_id'],
+                'sale_price' => $cart['sale_price']* $cart['qty'],
+                "buy_price" => $cart['buy_price']* $cart['qty'],
+                'sub_total' => $cart['sale_price']* $cart['qty']-$cart['buy_price']* $cart['qty'],
             ]);
 
 
@@ -128,6 +146,8 @@ return redirect()->route('sale_list',$saleid);
 
 
         $product = product::find($request->product_name);
+        $buy_price = Stock::find($request->product_name);
+        //dd($product);
 
 
 
@@ -158,6 +178,7 @@ return redirect()->route('sale_list',$saleid);
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
                         "sale_price" => $product->sale_price,
+                        "buy_price" => $buy_price->buy_price,
                         "qty" => $request->qty,
                         'sub_total' =>$product->sale_price * $request->qty
                     ]
@@ -189,6 +210,7 @@ return redirect()->route('sale_list',$saleid);
                         'product_id' => $product->id,
                         "product_name" => $product->product_name,
                         "sale_price" => $product->sale_price,
+                        "buy_price" => $buy_price->buy_price,
                         "qty" => $request->qty,
                         'sub_total' =>$product->sale_price * $request->qty
         ];

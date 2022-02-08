@@ -61,7 +61,7 @@
                                             <option>Select Product</option>
                                             @foreach($product as $add)
 
-                                                <option value="{{ $add->id }}">{{ $add->product_name }}</option>
+                                                <option value="{{ $add->id }}">{{ $add->product->product_name }}</option>
 
                                             @endforeach
                                         </select>
@@ -189,7 +189,7 @@
                                     <label for="customer_name">Customer</label>
                                     <select type="text" class="form-control select_group" id="customer_name"
                                         name="customer_name" placeholder="Customer" autocomplete="off">
-                                        
+
                                         @foreach($customer as $add)
 
                                             <option value="{{ $add->id }}">{{ $add->customer_name }}</option>

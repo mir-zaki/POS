@@ -28,4 +28,7 @@ class Sale extends Model
         public function customer(){
             return $this->belongsto(Customer::class,'customer_id','id');
         }
+        public function payment(){
+            return $this->belongsto(Paymentcustomer::class,'id','sale_id');
+        }
 }

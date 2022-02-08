@@ -15,8 +15,8 @@ class Payment extends Model
 
         }
 
-        public function Customer(){
-            return $this->belongsTo(Customer::class,'name','id');
+        public function customer(){
+            return $this->belongsTo(Customer::class,'customer_id','id');
         }
 
         public function purchase(){

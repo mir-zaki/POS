@@ -70,13 +70,13 @@ Route::group(['middleware'=>'auth'],function()
         //pos
 
         //return
-        Route::get('/return',[ReturnProductCon::class,'return'])->name('return');
-        Route::get('/manage/return',[ReturnProductCon::class,'manage_return'])->name('manage_return');
-        Route::get('/manage/return/list/{id}',[ReturnProductCon::class,'return_list'])->name('return_list');
-        Route::get('/return/sale/details',[ReturnProductCon::class,'return_details'])->name('return_details');
-        Route::post('/return/cart',[ReturnProductCon::class,'poscart'])->name('poscart');
-        Route::get('/return/forget',[ReturnProductCon::class,'pos_forget'])->name('pos_forget');
-        Route::post('/cart/return',[ReturnProductCon::class,'pos_post'])->name('pos_post');
+        // Route::get('/return',[ReturnProductCon::class,'return'])->name('return');
+        // Route::get('/manage/return',[ReturnProductCon::class,'manage_return'])->name('manage_return');
+        // Route::get('/manage/return/list/{id}',[ReturnProductCon::class,'return_list'])->name('return_list');
+        // Route::get('/return/sale/details',[ReturnProductCon::class,'return_details'])->name('return_details');
+        // Route::post('/return/cart',[ReturnProductCon::class,'poscart'])->name('poscart');
+        // Route::get('/return/forget',[ReturnProductCon::class,'pos_forget'])->name('pos_forget');
+        // Route::post('/cart/return',[ReturnProductCon::class,'pos_post'])->name('pos_post');
         //return
 
         //customer start

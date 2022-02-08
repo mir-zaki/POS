@@ -1,9 +1,6 @@
 @extends('backend.master')
 @section('content')
 
-@php
-    $due=0;
-@endphp
 
 
 
@@ -42,8 +39,7 @@
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>Account Type</th>
-                                    <th>Name</th>
+                                    <th>Customer Name</th>
                                     <th>Amount</th>
                                     <th>Pay Amount</th>
                                     <th>Pay Mathod</th>
@@ -59,17 +55,14 @@
 
                                 @foreach($pay as $supp)
 
-                                @php
-                                    $due=$supp->amount-$supp->pay;
-                                @endphp
+                                
                                     <tr>
                                         <td>{{ $supp->payment_date }}</td>
-                                        <td>{{ $supp->account_type }}</td>
                                         <td>{{ $supp->customer->customer_name}}</td>
                                         <td>{{ $supp->amount }}</td>
                                         <td>{{ $supp->pay }}</td>
                                         <td>{{ $supp->pay_method }}</td>
-                                        <td>{{$due}}</td>
+                                        <td>{{$supp->due}}</td>
                                         <td>{{ $supp->refer }}</td>
 
 

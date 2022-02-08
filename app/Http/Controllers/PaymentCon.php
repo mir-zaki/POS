@@ -26,7 +26,7 @@ class PaymentCon extends Controller
     public function addpay_customer($id){
 
         $sales=Sale::with('customer')->where('id',$id)->get();
-        // dd($sales);
+        //dd($sales);
         return view('backend.layout.payment.paycustomer',compact('sales'));
 
     }
@@ -53,7 +53,6 @@ class PaymentCon extends Controller
 
         Payment::create([
             'payment_date'=>$request->pay_date,
-            'account_type'=>$request->type,
             'name'=>$request->supplier_name,
             'amount'=>$request->amount,
             'pay'=>$request->pay,
@@ -66,16 +65,17 @@ class PaymentCon extends Controller
     public function payments_customer(Request $request)
     {
 
-        Paymentcustomer::create([
+        $saleid=Paymentcustomer::create([
+            'sale_id'=>$request->sale_id,
             'payment_date'=>$request->pay_date,
-            'account_type'=>$request->type,
-            'name'=>$request->customer_id,
+            'customer_id'=>$request->customer_id,
             'refer'=>$request->ref,
             'amount'=>$request->amount,
             'pay'=>$request->pay,
+            'due'=>$request->amount-$request->pay,
             'pay_method'=>$request->pay_method
         ]);
-        return redirect()->route('paymanage_customer');
+        return redirect()->route('sale_list',$saleid->sale_id);
     }
 
     }

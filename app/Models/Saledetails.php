@@ -16,4 +16,5 @@ class Saledetails extends Model
     {
         return $this->belongsTo(product::class,'product_id','id');
     }
+    
 }

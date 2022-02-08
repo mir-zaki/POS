@@ -33,55 +33,59 @@
                         <div class="box-body">
 
 
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="customer_name">Customer Name:</label>
+
+                                        <p>
+                                            @php
+                                            $customer_id = 0;
+                                            @endphp
+                                            @foreach ($sales as $sale)
+                                            {{$sale->customer->customer_name}}
+                                            @php
+                                            $customer_id = $sale->customer->id;
+                                            @endphp
+                                            @endforeach
+                                        </p>
+                                        <input required="" type="text" value="{{$customer_id}}" name="customer_id"
+                                            hidden>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="suppliername">Sale ID:</label>
+                                        <p>
+                                            {{$sale->id}}
+                                        </p>
+                                        <input required="" type="text" name="sale_id" value="{{$sale->id}}" hidden>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="suppliername">Amount:</label>
+                                        <p>
+                                            {{$sale->total_price}}
+                                        </p>
+                                        <input required="" type="text" name="amount" value="{{$sale->total_price}}"
+                                            hidden>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="col-md-6">
+
 
                             <div class="form-group">
                                 <label for="date" class="form-label">Date</label>
                                 <input required type="date" value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}"
-                                 class="form-control" id="pay_date" name="pay_date">
-                              </div>
-
-                              <div class="form-group">
-                                <label for="suppliername">Account Type</label>
-                                <input readonly type="text" class="form-control" id="type" name="type" placeholder="Amount" autocomplete="off" value="customer">
-                              </div>
-
-                              {{-- <div class="form-group">
-                                <label for="active">Account Type</label>
-                                <select class="form-control" id="type" name="type">
-                                    <option value="supplier">Supplier</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div> --}}
-
-
-
-
-                            <div class="form-group">
-                                <label for="customer_name">Customer</label>
-
-                                <p>
-                                    @php
-                                        $customer_id = 0;
-                                    @endphp
-                                   @foreach ($sales as $sale)
-                                   {{$sale->customer->customer_name}}
-                                   @php
-                                       $customer_id = $sale->customer->id;
-                                   @endphp
-                                   @endforeach
-                                </p>
-                                <input required="" type="text" value="{{$customer_id}}" name="customer_id" hidden >
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label for="suppliername">Amount</label>
-                                <p>
-                                    {{$sale->total_price}}
-                                </p>
-                                <input required="" type="text" name="amount" value="{{$sale->total_price}}" hidden>
-
+                                    class="form-control" id="pay_date" name="pay_date">
                             </div>
 
 
@@ -89,18 +93,16 @@
 
                             <div class="form-group">
                                 <label for="suppliername">Pay</label>
-                                <input type="text" class="form-control" id="pay" name="pay" placeholder="Pay" autocomplete="off" required="">
+                                <input type="text" class="form-control" id="pay" name="pay" placeholder="Pay"
+                                    autocomplete="off" required="">
 
                             </div>
 
 
 
-                            <div class="form-group">
+                            <div class="col-md-6" class="form-group">
                                 <label for="supplier_name">Payment Method</label>
-                                <select type="text" class="form-control select_group"
-
-
-                                id="pay_method" name="pay_method"
+                                <select type="text" class="form-control select_group" id="pay_method" name="pay_method"
                                     placeholder="supplier" autocomplete="off">
                                     <option>Hand Cash</option>
                                     <option>Bank</option>
@@ -108,43 +110,47 @@
                                     <option>Rocket</option>
                                     <option>Nagad</option>
 
-                            </select>
+                                </select>
 
                             </div>
 
 
-                            <div class="form-group">
+                            <div class="col-md-6" class="form-group">
                                 <label for="suppliername">Refarance</label>
-                                <input type="text" class="form-control" id="ref" name="ref" placeholder="Supplier name" autocomplete="off">
-                              </div>
+                                <input type="text" class="form-control" id="ref" name="ref" placeholder="Supplier name"
+                                    autocomplete="off">
+                            </div>
+
 
 
                         </div>
                         <!-- /.box-body -->
 
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa fa-money"> Payment</i></button>
+                        <div class="col-md-6" class="box-footer">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa fa-money">
+                                    Payment</i></button>
 
                         </div>
 
                     </form>
-
-
-
-                      </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+
+
+
+                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- col-md-12 -->
-
+            <!-- /.box -->
         </div>
-        <!-- /.row -->
+        <!-- col-md-12 -->
+
+</div>
+<!-- /.row -->
 
 
 
-    </section>
-    <!-- /.content -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
@@ -183,17 +189,18 @@
 
 </script>
 <script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      date_input.datepicker({
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      })
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
     })
-  </script>
+
+</script>
 
 <div>
 </div>

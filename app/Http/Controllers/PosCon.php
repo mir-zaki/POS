@@ -29,7 +29,7 @@ class PosCon extends Controller
     public function manage_sale(Request $request){
 
             $salemanage=Sale::with('payment')->orderBy('id','desc')->get();
-            dd($salemanage);
+            //dd($salemanage);
 
         return view('backend.layout.pos.managesale',compact('salemanage'));
 

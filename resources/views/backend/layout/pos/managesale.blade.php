@@ -46,6 +46,7 @@
                   <th>Date</th>
                   <th>Customer</th>
                   <th>Total Price</th>
+                    <th>Due</th>
                   <th>Sale By</th>
                   <th>Action</th>
                   </tr>
@@ -63,6 +64,7 @@
                         <td>{{$sa->sale_date}}</td>
                         <td>{{$sa->Customer->customer_name}}</td>
                         <td>{{$sa->total_price}}</td>
+                        <td>{{$sa->payment->due}}</td>
                         <td>{{$sa->User->username}}</td>
 
 
